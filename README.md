@@ -3,4 +3,5 @@ This is a group project for a Database II course. We are using PHP OCI for backe
 
 # What we I learned
 
-* PHP OCI for Oracle database
+* Oracle database
+* PHP OCI
