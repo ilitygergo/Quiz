@@ -13,7 +13,7 @@ First you have to install the required programs:
 
 * [*`Instantclient 12_2`*](https://www.oracle.com/technetwork/topics/winx64soft-089540.html)
 
-  Put this folder into C:\Oracle and add *C:\Oracle\instantclient_12_1* to your PATH system variable.
+  Put this folder into *C:\Oracle* and add *C:\Oracle\instantclient_12_1* to your PATH system variable.
 
 After this, clone the repository in your *xampp\htdocs* folder and you are good to go.
 
