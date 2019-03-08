@@ -3,7 +3,8 @@ INSERT INTO `Questions` VALUES (NULL, '1', 'Wilhelm Conrad Röntgen', 'Albert Ei
 INSERT INTO `Questions` VALUES (NULL, '0', 'George Washington', 'Abraham Lincoln', 'John Adams', 'Thomas Jefferson', 'Who was the first president of the USA?');
 INSERT INTO `Questions` VALUES (NULL, '0', 'Sheep', 'Cow', 'Dog', 'Goat', 'Which was the first animal to get cloned?');
 INSERT INTO `Questions` VALUES (NULL, '0', 'Mercury', 'Venus', 'Mars', 'Earth', 'Which planet is closest to the Sun?');
-INSERT INTO `Questions` VALUES (NULL, '1', 'Names', 'Steroids', 'Partners', 'Protein', 'A study published in the journal Anthrozoo reported that cows produce 5% more milk when they are given _____.');INSERT INTO `Questions` VALUES (NULL, '1', 'Laser pointer', 'Mouse', 'Flashlight', 'TV', 'The first item listed on eBay was a broken _____.');
+INSERT INTO `Questions` VALUES (NULL, '1', 'Names', 'Steroids', 'Partners', 'Protein', 'A study published in the journal Anthrozoo reported that cows produce 5% more milk when they are given _____.');
+INSERT INTO `Questions` VALUES (NULL, '1', 'Laser pointer', 'Mouse', 'Flashlight', 'TV', 'The first item listed on eBay was a broken _____.');
 INSERT INTO `Questions` VALUES (NULL, '1', 'Napoleonic Wars', 'WW2', 'WW1', 'Seven Years' War', 'The Battle of Austerlitz took place during which war?');
 INSERT INTO `Questions` VALUES (NULL, '0', 'France', 'The UK', 'Spain', 'Switzerland', 'The Statue of Liberty was a gift from which country?');
 INSERT INTO `Questions` VALUES (NULL, '0', 'Henry VIII', 'Henry VI', 'Edward V', 'Edward I', 'Which King of England had six wives?');
@@ -11,11 +12,13 @@ INSERT INTO `Questions` VALUES (NULL, '1', 'Pioneer 10', 'Voyager 1', 'Mariner 4
 INSERT INTO `Questions` VALUES (NULL, '1', 'Virginia', 'Texas', 'Nevada', 'Washington', 'In which US state is John F Kennedy buried?');
 INSERT INTO `Questions` VALUES (NULL, '1', 'Bolivia', 'Cuba', 'Colombia', 'Mexico', 'Where was Che Guevara killed?');
 INSERT INTO `Questions` VALUES (NULL, '1', 'Backrub', 'Googolplex', 'WeKnowIT', 'Slime', 'What was Google's original name?');
-INSERT INTO `Questions` VALUES (NULL, '1', 'Merry Christmas', 'Hello', 'Happy Birthday', 'Test', 'The first text message was by Neil Papworth in 1992. He texted, "___________."');INSERT INTO `Questions` VALUES (NULL, '1', 'Peru', 'Mexico', 'Pakistan', 'Egypt', 'In which country were potatoes first grown?');
+INSERT INTO `Questions` VALUES (NULL, '1', 'Merry Christmas', 'Hello', 'Happy Birthday', 'Test', 'The first text message was by Neil Papworth in 1992. He texted, "___________."');
+INSERT INTO `Questions` VALUES (NULL, '1', 'Peru', 'Mexico', 'Pakistan', 'Egypt', 'In which country were potatoes first grown?');
 INSERT INTO `Questions` VALUES (NULL, '1', 'Saudi Arabia', 'Pakistan', 'Afghanistan', 'Syria', 'In which country was Osama bin Laden born?');
 INSERT INTO `Questions` VALUES (NULL, '1', 'Austria', 'Germany', 'Switzerland', 'France', 'In which country was Adolf Hitler born?');
 INSERT INTO `Questions` VALUES (NULL, '0', '1939', '1940', '1938', '1941', 'When did WWII start?');
-INSERT INTO `Questions` VALUES (NULL, '1', '1941', '1942', '1943', '1940', 'When did the United States enter WWII?');INSERT INTO `Questions` VALUES (NULL, '1', 'Slovenia', 'Croatia', 'Poland', 'Canada', 'Where is Melania Trump originally from?');
+INSERT INTO `Questions` VALUES (NULL, '1', '1941', '1942', '1943', '1940', 'When did the United States enter WWII?');
+INSERT INTO `Questions` VALUES (NULL, '1', 'Slovenia', 'Croatia', 'Poland', 'Canada', 'Where is Melania Trump originally from?');
 INSERT INTO `Questions` VALUES (NULL, '1', 'Katharine Hepburn', 'Meryl Streep', 'Jack Nicholson', 'Daniel Day-Lewis', 'Which actor/actress won the most Oscars for acting?');
 INSERT INTO `Questions` VALUES (NULL, '1', '1997', '2005', '1999', '2000', 'When did South Park first air?');
 INSERT INTO `Questions` VALUES (NULL, '1', 'Roundhay Garden Scene', 'As Seen Through A Telescope', 'A Trip To The Moon', 'Dickson Greeting', 'What was the first movie's name?');
@@ -35,7 +38,8 @@ INSERT INTO `Questions` VALUES (NULL, '0', 'Mickey Mouse', 'Goofy', 'Pluto', 'Do
 INSERT INTO `Questions` VALUES (NULL, '0', 'Russia', 'The USA', 'Canada', 'China', 'What is the biggest country by territory in the world?');
 INSERT INTO `Questions` VALUES (NULL, '0', 'China', 'Russia', 'India', 'Brazil', 'What is the biggest country by population in the world?');
 INSERT INTO `Questions` VALUES (NULL, '0', 'Atlantic', 'Indian', 'Pacific', 'Eastern', 'Which ocean lies on the east coast of the United States');
-INSERT INTO `Questions` VALUES (NULL, '0', '5', '3', '2', '1', 'How many Great Lakes are there?');INSERT INTO `Questions` VALUES (NULL, '0', 'Sahara', 'Arabian', 'Great Australian', 'Kalahari', 'What is the biggest desert in the world?');
+INSERT INTO `Questions` VALUES (NULL, '0', '5', '3', '2', '1', 'How many Great Lakes are there?');
+INSERT INTO `Questions` VALUES (NULL, '0', 'Sahara', 'Arabian', 'Great Australian', 'Kalahari', 'What is the biggest desert in the world?');
 INSERT INTO `Questions` VALUES (NULL, '0', '4', '5', '6', '3', 'How many countries are in the UK?');
 INSERT INTO `Questions` VALUES (NULL, '0', 'Netherlands', 'Germany', 'Spain', 'Italy', 'Which of the following countries does not border France?');
 INSERT INTO `Questions` VALUES (NULL, '0', 'Arizona', 'Nevada', 'New Mexico', 'Texas', 'Which US state is the Grand Canyon located in?');
@@ -49,3 +53,21 @@ INSERT INTO `Questions` VALUES (NULL, '0', '26', '25', '30', '29', 'How many let
 INSERT INTO `Questions` VALUES (NULL, '0', 'Mars', 'Mercury', 'Uranus', 'Jupiter', 'Which planet is known as the Red Planet?');
 INSERT INTO `Questions` VALUES (NULL, '0', '13', '0', '5', '10', 'Which number comes next? 0, 1, 1, 2, 3, 5, 8, ?');
 INSERT INTO `Questions` VALUES (NULL, '0', '1914', '1910', '1939', '1915', 'During which year did World War I begin?');
+INSERT INTO `Questions` VALUES (NULL, '1', 'Henry Ford', 'Enzo Ferrari', 'Karl Benz', 'Gottlieb Daimler', 'Who introduced the first conveyor belt in the automotive industry?');
+INSERT INTO `Questions` VALUES (NULL, '1', 'Gottfried Wilhelm Leibniz', 'Isaac Newton', 'Leonhard Euler', 'Albert Einstein', 'Who is referred to as the "Father Of Calculus" ? ');
+INSERT INTO `Questions` VALUES (NULL, '0', 'Paintings', 'Literature', 'Architecture', 'Horticulture', 'What is Claude Monet known for?');
+INSERT INTO `Questions` VALUES (NULL, '1', 'Ferrari 360', 'Ferrari GTO', 'Ferrari f40', 'Ferrari 250 GT California', 'Which is the best-selling Ferrari model?');
+INSERT INTO `Questions` VALUES (NULL, '1', 'Karl Benz', 'Henry Ford', 'Enzo Ferrari', 'Ettore Bugatti', 'Who made the first car with an internal combustion engine?');
+INSERT INTO `Questions` VALUES (NULL, '1', '2007', '2006', '2008', '2005', 'When was the first iPhone released?');
+INSERT INTO `Questions` VALUES (NULL, '1', '4', '3', '2', '1', 'How many engines does a Boeing 747 have?');
+INSERT INTO `Questions` VALUES (NULL, '1', 'Johannes Gutenberg', 'Galileo Galilei', 'Thomas Edison', 'Leonardo da Vinci', 'Who was the inventor of the movable-type printing press?');
+INSERT INTO `Questions` VALUES (NULL, '1', 'Alexander Graham Bell', 'Thomas Edison', 'James Watt', 'Alexander Fleming', 'Who is credited with the development of the first practical telephone?');
+INSERT INTO `Questions` VALUES (NULL, '1', 'Bonn', 'Berlin', 'Bern', 'Frankfurt', 'What was the capital of West Germany?');
+INSERT INTO `Questions` VALUES (NULL, '0', 'Germany', 'Austria', 'Switzerland', 'USA', 'Where was the company "Haribo" founded?');
+INSERT INTO `Questions` VALUES (NULL, '0', 'Satya Nadella', 'Bill Gates', 'Steve Jobs', 'Elon Musk', 'Who was the CEO of Microsoft in 2018?');
+INSERT INTO `Questions` VALUES (NULL, '0', 'Tim Cook', 'Steve Jobs', 'Bill Gates', 'Satya Nadella', 'Who was the CEO of Apple in 2018?');
+INSERT INTO `Questions` VALUES (NULL, '0', 'Comic Actor', 'Inventor', 'Singer', 'Architect', 'What was Charlie Chaplin's occupation?');
+INSERT INTO `Questions` VALUES (NULL, '0', 'Poland', 'Austria', 'Germany', 'Japan', 'Where is the Auschwitz concentration camp located?');
+INSERT INTO `Questions` VALUES (NULL, '0', 'French', 'Roman', 'German', 'Portuguese ', 'What was Napoleon Bonaparte's nationality?');
+INSERT INTO `Questions` VALUES (NULL, '1', 'Porsche', 'Volkswagen', 'BMW', 'Mercedes Benz', 'Who engineered the Volkswagen Beetle?');
+
