@@ -64,7 +64,17 @@ if(isset($_GET['err'])){
           <label>Wrong Answer</label>
       </p>
 
-      <p>
+      <select class="w3-select" name="tp">
+          <option value="" disabled selected></option>
+          <option value="history">History</option>
+          <option value="geography">Geography</option>
+          <option value="technology">Technology</option>
+          <option value="literature">Literature</option>
+          <option value="nature">Nature</option>
+      </select>
+      <label>Topic</label>
+
+        <p>
           <h5>Hardness</h5>
           <input class="w3-radio" type="radio" name="ha" value="0" checked>
           <label>Easy</label>

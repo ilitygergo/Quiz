@@ -88,11 +88,11 @@ INSERT into Results values(NULL, 8, 0, '2019-02-24', 'History', 2);
 
 INSERT into Challanges values(NULL, 0, '2019-02-20', 'History', 1, 2);
 
-INSERT INTO Questions VALUES (NULL, 0, 'History', 'Yuri Gagarin', 'Neil Armstrong', 'Jim Lovell', 'Alan Shepard', 'Who was the first man to go to space?');
-INSERT INTO Questions VALUES (NULL, 0, 'History', 'George Washington', 'Abraham Lincoln', 'John Adams', 'Thomas Jefferson', 'Who was the first president of the USA?');
-INSERT INTO Questions VALUES (NULL, 0, 'History', 'France', 'The UK', 'Spain', 'Switzerland', 'The Statue of Liberty was a gift from which country?');
-INSERT INTO Questions VALUES (NULL, 0, 'History', '1939', '1940', '1938', '1941', 'When did WWII start?');
-INSERT INTO Questions VALUES (NULL, 0, 'History', '1914', '1910', '1939', '1915', 'During which year did World War I begin?');
+INSERT INTO Questions VALUES (NULL, 0, 'history', 'Yuri Gagarin', 'Neil Armstrong', 'Jim Lovell', 'Alan Shepard', 'Who was the first man to go to space?');
+INSERT INTO Questions VALUES (NULL, 0, 'history', 'George Washington', 'Abraham Lincoln', 'John Adams', 'Thomas Jefferson', 'Who was the first president of the USA?');
+INSERT INTO Questions VALUES (NULL, 0, 'history', 'France', 'The UK', 'Spain', 'Switzerland', 'The Statue of Liberty was a gift from which country?');
+INSERT INTO Questions VALUES (NULL, 0, 'history', '1939', '1940', '1938', '1941', 'When did WWII start?');
+INSERT INTO Questions VALUES (NULL, 0, 'history', '1914', '1910', '1939', '1915', 'During which year did World War I begin?');
 
 INSERT into Friends values(1, 2, '2019-02-19', 'active');
 

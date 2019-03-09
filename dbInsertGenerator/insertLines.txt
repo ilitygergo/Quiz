@@ -71,3 +71,6 @@ INSERT INTO `Questions` VALUES (NULL, '0', 'Poland', 'Austria', 'Germany', 'Japa
 INSERT INTO `Questions` VALUES (NULL, '0', 'French', 'Roman', 'German', 'Portuguese ', 'What was Napoleon Bonaparte's nationality?');
 INSERT INTO `Questions` VALUES (NULL, '1', 'Porsche', 'Volkswagen', 'BMW', 'Mercedes Benz', 'Who engineered the Volkswagen Beetle?');
 
+INSERT INTO Questions VALUES (NULL, '0','literature' , '1564 - 1616', '1619 - 1690', '1544 - 1603', '1575 - 1620', 'When did William Shakespeare live?');
+INSERT INTO Questions VALUES (NULL, '0','literature', '1884', '1932', '1879', '1799', 'When did Mark Twain write Huckleberry Finn?');
+INSERT INTO Questions VALUES (NULL, '0','literature', 'The Fireman', 'Celsius 232', 'Flaming shelves', '3000 Degrees', 'What was the original title of Fahrenheit 451?');
