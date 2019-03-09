@@ -70,6 +70,13 @@ INSERT INTO Questions VALUES (NULL, '0', 'history' 'Comic Actor', 'Inventor', 'S
 INSERT INTO Questions VALUES (NULL, '0', 'history' 'Poland', 'Austria', 'Germany', 'Japan', 'Where is the Auschwitz concentration camp located?');
 INSERT INTO Questions VALUES (NULL, '0', 'history' 'French', 'Roman', 'German', 'Portuguese ', 'What was Napoleon Bonaparte's nationality?');
 INSERT INTO Questions VALUES (NULL, '1', 'history' 'Porsche', 'Volkswagen', 'BMW', 'Mercedes Benz', 'Who engineered the Volkswagen Beetle?');
-INSERT INTO Questions VALUES (NULL, '0','literature' , '1564 - 1616', '1619 - 1690', '1544 - 1603', '1575 - 1620', 'When did William Shakespeare live?');
-INSERT INTO Questions VALUES (NULL, '0','literature', '1884', '1932', '1879', '1799', 'When did Mark Twain write Huckleberry Finn?');
-INSERT INTO Questions VALUES (NULL, '0','literature', 'The Fireman', 'Celsius 232', 'Flaming shelves', '3000 Degrees', 'What was the original title of Fahrenheit 451?');
+INSERT INTO Questions VALUES (NULL, '0', 'literature' , '1564 - 1616', '1619 - 1690', '1544 - 1603', '1575 - 1620', 'When did William Shakespeare live?');
+INSERT INTO Questions VALUES (NULL, '0', 'literature', '1884', '1932', '1879', '1799', 'When did Mark Twain write Huckleberry Finn?');
+INSERT INTO Questions VALUES (NULL, '0', 'literature', 'The Fireman', 'Celsius 232', 'Flaming shelves', '3000 Degrees', 'What was the original title of Fahrenheit 451?');
+INSERT INTO Questions VALUES (NULL, '0', 'science', 'Adenosine triphosphate', 'Attitude Prediction', 'Austrian Thermal Power', 'Abbreviated Training Program', 'What does ATP stand for?');
+INSERT INTO Questions VALUES (NULL, '0', 'science', 'Extrasolar planets', 'Interstellar planets', 'Intersolar planets', 'Extrastellar planets', 'What is the name given to planets outside our solar system?');
+INSERT INTO Questions VALUES (NULL, '0', 'science', '3600', '60', '360', '120', 'How many seconds are there in an hour?');
+INSERT INTO Questions VALUES (NULL, '0', 'geography', 'San Francisco', 'Los Angeles', 'Dallas', 'New York', 'Where is the Golden Gate bridge?');
+INSERT INTO Questions VALUES (NULL, '1', 'science', '3', '2', '1', '4', 'How many hearts does an octopus have?');
+INSERT INTO Questions VALUES (NULL, '1', 'science', 'The liver', 'The heart', 'The brain', 'The stomach', 'What is the heaviest organ in the human body?');
+INSERT INTO Questions VALUES (NULL, '0', 'science', 'Alexander Fleming', 'Gregor Mendel', 'Louis Pasteur', 'Agnes Arber', 'Who discovered penicillin?');

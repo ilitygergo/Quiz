@@ -71,6 +71,7 @@ if(isset($_GET['err'])){
           <option value="technology">Technology</option>
           <option value="literature">Literature</option>
           <option value="nature">Nature</option>
+          <option value="science">Science</option>
       </select>
       <label>Topic</label>
 

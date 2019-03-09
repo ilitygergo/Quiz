@@ -15,7 +15,7 @@ if (    isset($_POST['qu']) AND isset($_POST['ra']) AND isset($_POST['wa1']) AND
 
         $output = fopen("insertLines.txt","a");
 
-        $query_text = "INSERT INTO Questions VALUES (NULL, '$hardness','$topic', '$right_answer', '$wrong_answer1', '$wrong_answer2', '$wrong_answer3', '$question');\n";
+        $query_text = "INSERT INTO Questions VALUES (NULL, '$hardness', '$topic', '$right_answer', '$wrong_answer1', '$wrong_answer2', '$wrong_answer3', '$question');\n";
         fwrite($output,$query_text);
         fclose($output);
 
