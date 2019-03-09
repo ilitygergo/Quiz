@@ -98,3 +98,13 @@ INSERT INTO Questions VALUES (NULL, '0', 'history', 'Bastille', 'Alcatraz', 'Por
 INSERT INTO Questions VALUES (NULL, '1', 'literature', 'Rabbits', 'Pigs', 'Dogs', 'Zebras', 'What sort of animals did Richard Adams write about in Watership Down?');
 INSERT INTO Questions VALUES (NULL, '0', 'literature', 'He turned into an insect', 'He forgot his name', 'He killed himself', 'He fantasized about space', 'What happened one night to the central character of Kafka's Metamorphosis?');
 INSERT INTO Questions VALUES (NULL, '0', 'literature', 'Alexander Pushkin', 'Ivan Bunin', 'Leo Tolstoy', 'Vladimir Lenin', 'Who wrote Boris Godunov?');
+INSERT INTO Questions VALUES (NULL, '0', 'technology', 'Read-only memory', 'Registers on memory', 'Read open memory', 'Real open memory', 'In terms of computing, what does ROM stand for?');
+INSERT INTO Questions VALUES (NULL, '0', 'technology', 'World Wide Web', 'World Without Windows', 'World Wide Waiting', 'Wiki Wiki Web', 'What does the abbreviation WWW stand for?');
+INSERT INTO Questions VALUES (NULL, '0', 'technology', 'California', 'New York', 'Texas', 'Canada', 'Where is Silicon Valley located?');
+INSERT INTO Questions VALUES (NULL, '1', 'technology', 'Motorola', 'VIA', 'IBM', 'Cyrix', 'Which of the following was not a x86 CPU maker?');
+INSERT INTO Questions VALUES (NULL, '1', 'technology', 'Deep Blue', 'Blue Gene', 'Cray Jaguar', 'Watson', 'What computer system was the first to win a chess match against a world champion under regular time constraints?');
+INSERT INTO Questions VALUES (NULL, '1', 'technology', 'A medieval Scandinavian king', 'An electric eel with blue teeth', 'A bear that loves blueberries', 'A Native American chieftain', 'Bluetooth technology is named after...');
+INSERT INTO Questions VALUES (NULL, '0', 'technology', 'IBM', 'Fujitsu', 'Xerox', 'Intel', 'Which company invented the hard disk drive?');
+INSERT INTO Questions VALUES (NULL, '1', 'technology', 'Playstation 3', 'Xbox', 'Xbox 360', 'Nintendo Wii', 'In 2010, the United States Air Force used more than a thousand game consoles to build a supercomputer... which one?');
+INSERT INTO Questions VALUES (NULL, '0', 'technology', 'Hard Disk Drive', 'Head Down Display', 'Hardware Design Document', 'Hot Dog Disk', 'What does HDD stand for?');
+INSERT INTO Questions VALUES (NULL, '1', 'technology', 'Bliss', 'Majesty', 'Splendor', 'Happiness', 'What is the name of the landscape picture that is set as default wallpaper on Windows XP?');
