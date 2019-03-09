@@ -79,6 +79,7 @@ create table Has(
 
 ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD';
 
+INSERT into Usr values(NULL, 'Admin', 'Admin', 'admin123@gmail.com', 'password123', '1998-03-15', 'male', 1);
 INSERT into Usr values(NULL, 'Teszt', 'Elek', 'tesztelek@gmail.com', 'password123', '1998-03-15', 'male', 0);
 INSERT into Usr values(NULL, 'Teszt', 'Balázs', 'teszbalazs@gmail.com', 'password123', '1994-06-10', 'male', 0);
 
