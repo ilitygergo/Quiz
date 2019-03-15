@@ -1,0 +1,16 @@
+# ================================================================================================
+
+# UNDERSTAND PAGES WITHOUT .PHP END; FOR EXAMPLE -> /INDEX.PHP AND JUST /INDEX <- BOTH WORK
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(([A-Za-z0-9\-]+/)*[A-Za-z0-9\-]+)?$ $1.php
+# ================================================================================================
+
+# NO PUBLIC ACCESS TO .htaccess file
+<files ~ "^.*\.([Hh][Tt][Aa])">
+order allow,deny
+deny from all
+satisfy all
+</files>
+# ================================================================================================
