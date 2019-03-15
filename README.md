@@ -15,10 +15,8 @@ First you have to install the required programs:
 
   Put this folder into *C:\Oracle* and add *C:\Oracle\instantclient_12_1* to your PATH system variable.
 
-To have a connection to your local database, give your connection the name: *system* and the password: *Aladar12*. Change your php.ini file from xampp by clicking on Config ->  PHP(php.ini) and uncomment 
-* the extension=oci8_12c
-* extension=php_oci8_12c.dll
-lines. After starting Apache you should be able to access your database from the code. 
+To have a connection to your local database, give your connection the name: **system** and the password: **Aladar12**. Change your php.ini file from xampp by clicking on Config ->  PHP(php.ini) and uncomment these lines: `the extension=oci8_12c` `extension=php_oci8_12c.dll`.
+After starting Apache you should be able to access your database from the code. 
 
 After this, clone the repository in your *xampp\htdocs* folder and you are good to go.
 
