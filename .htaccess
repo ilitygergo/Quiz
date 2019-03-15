@@ -14,3 +14,8 @@ deny from all
 satisfy all
 </files>
 # ================================================================================================
+
+# SET SERVER TIMEZONE TO OUR LOCAL TIMEZONE -> GOOD FOR EVADING PROBLEMS WITH mkdate AND date IN PHP
+
+SetEnv TZ Europe/Budapest
+# ================================================================================================
