@@ -63,10 +63,10 @@ INSERT into Usr values(NULL, 'Admin', 'Admin', 'admin123@gmail.com', 'password12
 INSERT into Usr values(NULL, 'Teszt', 'Elek', 'tesztelek@gmail.com', 'password123', '1998-03-15', 'male', 20, 0);
 INSERT into Usr values(NULL, 'Teszt', 'Balázs', 'teszbalazs@gmail.com', 'password123', '1994-06-10', 'male', 19, 0);
 
-INSERT into Results values(NULL, 5, 0, '2019-02-20', 'History', 1);
-INSERT into Results values(NULL, 8, 0, '2019-02-24', 'History', 2);
+INSERT into Results values(NULL, 5, 0, '2019-02-20', 'History', 2);
+INSERT into Results values(NULL, 8, 0, '2019-02-24', 'History', 3);
 
-INSERT into Challanges values(NULL, 0, '2019-02-20', 'History', 1, 2);
+INSERT into Challanges values(NULL, 0, '2019-02-20', 'History', 2, 3);
 
 INSERT INTO Questions VALUES (NULL, '0', 'history', 'Yuri Gagarin', 'Neil Armstrong', 'Jim Lovell', 'Alan Shepard', 'Who was the first man to go to space?');
 INSERT INTO Questions VALUES (NULL, '0', 'history', 'George Washington', 'Abraham Lincoln', 'John Adams', 'Thomas Jefferson', 'Who was the first president of the USA?');
@@ -303,7 +303,7 @@ INSERT INTO Questions VALUES (NULL, '1', 'literature', '14', '20', '12', '8', 'H
 INSERT INTO Questions VALUES (NULL, '0', 'literature', 'Raven', 'Cat', 'Monkey', 'Mouse', 'Edgar Allen Poe wrote a famous poem about this animal.');
 INSERT INTO Questions VALUES (NULL, '0', 'literature', 'Spanish', 'American', 'French', 'Italian', 'What Is The Nationality Of Picasso?');
 
-INSERT into Friends values(1, 2, '2019-02-19', 'active');
+INSERT into Friends values(2, 3, '2019-02-19', 'active');
 
 INSERT into Has values(1, 1);
 INSERT into Has values(1, 2);
