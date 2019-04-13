@@ -18,6 +18,6 @@ class Database {
 
         oci_execute($result);
 
-        return oci_fetch_array($result);
+        return $result;
     }
 }

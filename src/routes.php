@@ -2,7 +2,6 @@
 
 Route::set('index', function() {
     Index::view('Index');
-    Index::test();
 });
 
 Route::set('login', function() {

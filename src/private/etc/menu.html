@@ -1,0 +1,32 @@
+<span id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="zar()">×</a>
+    <a href="index">Home</a>
+    <a href="profil">Profile</a>
+    <a href="friends">Friends</a>
+    <a href="ranklist">Ranklist</a>
+    <a href="mygames">My Games</a>
+    <a href="login">Log Out</a>
+</span>
+
+<table>
+    <tr>
+        <td width="500px">
+            <span style="font-size:30px;cursor:pointer;color: #EF3B3A" onclick="nyit()">Menu</span>
+        </td>
+        <td >
+            <span id="ez" class="w3-display-topmiddle">Quizzy</span>
+        </td>
+    </tr>
+</table>
+
+<hr class="w3-deep-orange">
+
+<script>
+    function nyit() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function zar() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
