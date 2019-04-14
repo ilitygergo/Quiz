@@ -1,6 +1,11 @@
 <?php
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/models/User.php');
 
+session_start();
+if (isset($_SESSION["USERID"])) {
+    session_destroy();
+}
+
 $user = new User(null, null, null,
     null, null, null,
     null, null, 0);
@@ -24,6 +29,11 @@ if (isset( $_GET["logemail"]) && isset( $_GET["logpassword"])) {
     $user->setPassword($_GET["logpassword"]);
 
     if ($user->login()) {
+        $userID = $user->getUserIDByValues($user->getEmail(), $user->getPassword());
+        $user->setUserID($userID);
+
+        $_SESSION["USERID"] = $user->getUserID();
+
         header("Location: http://localhost/Quiz/src/index");
     }
 }

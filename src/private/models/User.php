@@ -82,6 +82,14 @@ class User {
     }
 
     /**
+     * @param int
+     */
+    public function setUserID($userID)
+    {
+        $this->userID = $userID;
+    }
+
+    /**
      * @return string
      */
     public function getUserName()
@@ -211,6 +219,24 @@ class User {
     }
 
     /**
+     * @param $email
+     * @param $password
+     * @return int
+     */
+    public function getUserIDByValues($email, $password) {
+        $userID = null;
+
+        $sql = 'SELECT USERID FROM Usr WHERE email = \'' . $this->email . '\' AND password = \'' . $this->password . '\'';
+        $result = Database::query($sql);
+
+        if ($row = oci_fetch_array($result)) {
+            $userID = $row[0];
+        }
+
+        return $userID;
+    }
+
+    /**
      * Validation for registration
      * @throws
      * @return bool
@@ -257,7 +283,7 @@ class User {
      */
     function login() {
         try {
-            $sql = 'SELECT email FROM Usr WHERE email = \'' . $this->email . '\' AND password = \'' . $this->password . '\'';
+            $sql = 'SELECT * FROM Usr WHERE email = \'' . $this->email . '\' AND password = \'' . $this->password . '\'';
             $result = Database::query($sql);
 
             if (!oci_fetch_array($result)) {
