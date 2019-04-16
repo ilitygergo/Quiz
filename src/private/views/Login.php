@@ -6,9 +6,7 @@ if (isset($_SESSION["USERID"])) {
     session_destroy();
 }
 
-$user = new User(null, null, null,
-    null, null, null,
-    null, null, 0);
+$user = new User();
 
 if (isset( $_GET["name"]) && isset( $_GET["password"]) && isset( $_GET["email"])) {
     $user->setUserName($_GET["name"]);

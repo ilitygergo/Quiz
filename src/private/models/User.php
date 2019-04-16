@@ -50,27 +50,18 @@ class User {
 
     /**
      * User constructor.
-     * @param $userID
-     * @param $userName
-     * @param $firstName
-     * @param $lastName
-     * @param $email
-     * @param $password
-     * @param $birthday
-     * @param $gender
-     * @param $isAdmin
      */
-    public function __construct($userID, $userName, $firstName, $lastName, $email, $password, $birthday, $gender, $isAdmin)
+    public function __construct()
     {
-        $this->userID = $userID;
-        $this->userName = $userName;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->email = $email;
-        $this->password = $password;
-        $this->birthday = $birthday;
-        $this->gender = $gender;
-        $this->isAdmin = $isAdmin;
+        $this->userID = null;
+        $this->userName = null;
+        $this->firstName = null;
+        $this->lastName = null;
+        $this->email = null;
+        $this->password = null;
+        $this->birthday = null;
+        $this->gender = null;
+        $this->isAdmin = 0;
     }
 
     /**
@@ -218,6 +209,23 @@ class User {
         $this->isAdmin = $isAdmin;
     }
 
+    function getUser($userID) {
+        $sql = 'SELECT * FROM Usr WHERE USERID = \'' . $userID . '\'';
+        $result = Database::query($sql);
+
+        if ($row = oci_fetch_array($result)) {
+            $this->userID = $row[0];
+            $this->userName = $row[1];
+            $this->firstName = $row[2];
+            $this->lastName = $row[3];
+            $this->email = $row[4];
+            $this->password = $row[5];
+            $this->birthday = $row[6];
+            $this->gender = $row[7];
+            $this->isAdmin = $row[8];
+        }
+    }
+
     /**
      * @param $email
      * @param $password
@@ -226,7 +234,7 @@ class User {
     public function getUserIDByValues($email, $password) {
         $userID = null;
 
-        $sql = 'SELECT USERID FROM Usr WHERE email = \'' . $this->email . '\' AND password = \'' . $this->password . '\'';
+        $sql = 'SELECT USERID FROM Usr WHERE email = \'' . $email . '\' AND password = \'' . $password . '\'';
         $result = Database::query($sql);
 
         if ($row = oci_fetch_array($result)) {

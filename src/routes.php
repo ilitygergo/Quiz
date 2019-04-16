@@ -15,3 +15,15 @@ Route::set('profil', function() {
 Route::set('game', function() {
     Game::view('Game');
 });
+
+Route::set('played', function() {
+    Played::view('Played');
+});
+
+Route::set('friends', function() {
+    Friends::view('Friends');
+});
+
+Route::set('ranklist', function() {
+    Ranklist::view('Ranklist');
+});

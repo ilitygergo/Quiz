@@ -9,7 +9,7 @@
     padding: 45px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
-    <div class="w3-animate-top"> <h4>Kérdés sdékfédkfésk éleké lké ské rkétke élk télkédlrkt ?</h4></div>
+    <div class="w3-animate-top"> <h4>Kérdés?</h4></div>
     <hr/>
     <table class="w3-display-middle" style="margin-top: 70px">
         <tr style="padding: 30px">
