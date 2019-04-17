@@ -1,11 +1,10 @@
 <?php
 
-require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/etc/menu.html');
+require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/etc/menu.php');
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/models/User.php');
 
 $user = new User();
 
-session_start();
 if (isset($_SESSION["USERID"])) {
     $user->setUserID($_SESSION["USERID"]);
     $user->getUser($user->getUserID());
@@ -15,6 +14,7 @@ if (isset($_SESSION["USERID"])) {
 
 <div class="w3-display-container w3-round-large w3-green" style="height: 500px;  position: relative; z-index: 1;
     background: #FFFFFF;
+    top: 150px;
     max-width: 400px;
     margin:30px auto 100px ;
     padding: 45px;
@@ -58,11 +58,11 @@ if (isset($_SESSION["USERID"])) {
         </tr>
 
         <tr>
-            <td colspan="2"><button>My Stat</button></td>
+            <td colspan="2"><button class="btn btn-info">My Stat</button></td>
         </tr>
 
         <tr>
-            <td colspan="2"><button>Edit</button></td>
+            <td colspan="2"><button class="btn btn-info">Edit</button></td>
         </tr>
     </table>
 

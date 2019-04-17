@@ -8,8 +8,8 @@ Route::set('login', function() {
     Login::view('Login');
 });
 
-Route::set('profil', function() {
-    Profil::view('Profil');
+Route::set('profile', function() {
+    Profile::view('Profile');
 });
 
 Route::set('game', function() {

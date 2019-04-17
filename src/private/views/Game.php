@@ -5,6 +5,7 @@
 <div class="w3-display-container w3-round-large w3-green" style="height:400px;  position: relative; z-index: 1;
     background: #FFFFFF;
     max-width: 500px;
+    top: 150px;
     margin:30px auto 100px ;
     padding: 45px;
     text-align: center;
