@@ -13,6 +13,7 @@ if (isset($_SESSION["USERID"])) {
 ?>
 
 <span id="mySidenav" class="sidenav">
+    <span class="fas fa-brain fa-2x quizzy">Quizzy</span>
     <a href="index">Home</a>
     <a href="profile">Profile</a>
     <a href="friends">Friends</a>
@@ -61,7 +62,6 @@ if (isset($_SESSION["USERID"])) {
     }
 
     document.body.addEventListener('click', function() {
-        console.log('clicked');
         zar();
     }, true);
 </script>

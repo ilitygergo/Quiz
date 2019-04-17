@@ -5,6 +5,7 @@
     padding: 8% 0 0;
     margin: auto;
 }
+
 .form {
     position: relative;
     z-index: 1;
@@ -15,6 +16,7 @@
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+
 .form input {
     font-family: "Roboto", sans-serif;
     outline: 0;
@@ -26,11 +28,12 @@
     box-sizing: border-box;
     font-size: 14px;
 }
+
 .form button {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #4CAF50;
+    background: #ffc728;
     width: 100%;
     border: 0;
     padding: 15px;
@@ -40,37 +43,45 @@
     transition: all 0.3 ease;
     cursor: pointer;
 }
+
 .form button:hover,.form button:active,.form button:focus {
-    background: #43A047;
+    background: #ffc728;
 }
+
 .form .message {
     margin: 15px 0 0;
     color: #b3b3b3;
     font-size: 12px;
 }
+
 .form .message a {
     padding-right: 400px;
-    color: #4CAF50;
+    color: #ffc728;
     text-decoration: none;
 }
+
 .form .register-form {
     display: none;
 }
+
 .container {
     position: relative;
     z-index: 1;
     max-width: 300px;
     margin: 0 auto;
 }
+
 .container:before, .container:after {
     content: "";
     display: block;
     clear: both;
 }
+
 .container .info {
     margin: 50px auto;
     text-align: center;
 }
+
 .container .info h1 {
     margin: 0 0 15px;
     padding: 0;
@@ -78,27 +89,32 @@
     font-weight: 300;
     color: #1a1a1a;
 }
+
 .container .info span {
     color: #4d4d4d;
     font-size: 12px;
 }
+
 .container .info span a {
     color: #000000;
     text-decoration: none;
 }
+
 .container .info span .fa {
     color: #EF3B3A;
 }
+
 body {
-    background: #76b852; /* fallback for old browsers */
-    background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-    background: -moz-linear-gradient(right, #76b852, #8DC26F);
-    background: -o-linear-gradient(right, #76b852, #8DC26F);
-    background: linear-gradient(to left, #76b852, #8DC26F);
+    background: #ffc728; /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, #ffc728, #ffc728);
+    background: -moz-linear-gradient(right, #ffc728, #ffc728);
+    background: -o-linear-gradient(right, #ffc728, #ffc728);
+    background: linear-gradient(to left, #ffc728, #ffc728);
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 #ez{
     font-size: 50px;
     color: #EF3B3A;
@@ -109,9 +125,8 @@ p{
     width: 700px;
     font-size: larger;
     text-align: center;
-    color: #4CB150;
+    color: #ffc728;
 }
-
 
 .sidenav {
     height: 100%;
@@ -130,13 +145,13 @@ p{
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #76b852;
+    color: #fff;
     display: block;
     transition: 0.3s;
 }
 
 .sidenav a:hover {
-    color: #3f51b5;
+    color: #ffc728;
 }
 
 .sidenav .closebtn {
@@ -152,9 +167,8 @@ span.ez, p, .sidenav , .sidenav a{
 }
 
 #tan{
-    color: #76b852;
+    color: #ffc728;
     font-family: "Lobster", serif;
-
 }
 
 #themetd{
@@ -200,14 +214,12 @@ span.ez, p, .sidenav , .sidenav a{
     height: 17px;
 }
 
-/* Hide default HTML checkbox */
 .switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
 
-/* The slider */
 .slider {
     position: absolute;
     cursor: pointer;
@@ -246,7 +258,6 @@ input:checked + .slider:before {
     transform: translateX(26px);
 }
 
-/* Rounded sliders */
 .slider.round {
     border-radius: 34px;
 }
@@ -258,4 +269,68 @@ input:checked + .slider:before {
 .class1{
     background-color:red;
     color:white;
+}
+
+.quizzy{
+    padding-left: 0.5em;
+    color:white;
+}
+
+.fa-brain{
+    color: #fff;
+}
+
+.flip {
+    -webkit-perspective: 800px;
+    width: 400px;
+    height: 260px;
+    position: relative;
+    margin: auto;
+}
+.flip .card.flipped {
+    -webkit-transform: rotatey(-180deg);
+}
+
+.flip .card {
+    width: 100%;
+    height: 100%;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: 0.5s;
+}
+
+.flip .card .face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    -webkit-backface-visibility: hidden ;
+    y-index: 2;
+    font-family: Georgia;
+    text-align: center;
+}
+
+.flip .card .front {
+    position: absolute;
+    y-index: 1;
+    background: black;
+    color: white;
+    cursor: pointer;
+}
+
+.flip .card .back {
+    -webkit-transform: rotatey(-180deg);
+    background: white;
+    color: black;
+    cursor: pointer;
+}
+
+.button-left {
+    position: absolute;
+    left: 0;
+    margin-left:5px;
+}
+
+.button-right {
+    position: absolute;
+    right: 0;
+    margin-right:5px;
 }
