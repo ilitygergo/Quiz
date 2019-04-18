@@ -15,7 +15,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/etc/menu.p
     padding: 45px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
-    <button type="button" class="btn btn-info btn-lg" onclick="game()">Quick Game</button>
+    <button type="button" class="btn btn-dark btn-lg" onclick="game()">Quick Game</button>
     <table class="w3-display-middle w3-panel w3-round-large">
         <tr>
             <td id="themetd">History</td>

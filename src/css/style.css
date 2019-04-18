@@ -33,7 +33,7 @@
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #F9F9F9;
+    background: #FF9F1C;
     width: 100%;
     border: 0;
     padding: 15px;
@@ -45,7 +45,7 @@
 }
 
 .form button:hover,.form button:active,.form button:focus {
-    background: #F9F9F9;
+    background: #E8911A;
 }
 
 .form .message {
@@ -56,7 +56,7 @@
 
 .form .message a {
     padding-right: 400px;
-    color: #F9F9F9;
+    color: #FF9F1C;
     text-decoration: none;
 }
 
@@ -105,11 +105,11 @@
 }
 
 body {
-    background: #F9F9F9; /* fallback for old browsers */
-    background: -webkit-linear-gradient(right, #F9F9F9, #F9F9F9);
-    background: -moz-linear-gradient(right, #F9F9F9, #F9F9F9);
-    background: -o-linear-gradient(right, #F9F9F9, #F9F9F9);
-    background: linear-gradient(to left, #F9F9F9, #F9F9F9);
+    background: #f0f0f0; /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, #f0f0f0, #f0f0f0);
+    background: -moz-linear-gradient(right, #f0f0f0, #f0f0f0);
+    background: -o-linear-gradient(right, #f0f0f0, #f0f0f0);
+    background: linear-gradient(to left, #f0f0f0, #f0f0f0);
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -125,7 +125,7 @@ p{
     width: 700px;
     font-size: larger;
     text-align: center;
-    color: #F9F9F9;
+    color: #111;
 }
 
 .sidenav {
@@ -151,7 +151,7 @@ p{
 }
 
 .sidenav a:hover {
-    color: #F9F9F9;
+    color: #33658A;
 }
 
 .sidenav .closebtn {
@@ -167,7 +167,7 @@ span.ez, p, .sidenav , .sidenav a{
 }
 
 #tan{
-    color: #F9F9F9;
+    color: #FF9F1C;
     font-family: "Lobster", serif;
 }
 
@@ -245,11 +245,11 @@ span.ez, p, .sidenav , .sidenav a{
 }
 
 input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #FF9F1C;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #FF9F1C;
 }
 
 input:checked + .slider:before {
@@ -283,7 +283,7 @@ input:checked + .slider:before {
 .flip {
     -webkit-perspective: 800px;
     width: 400px;
-    height: 260px;
+    height: 400px;
     position: relative;
     margin: auto;
 }
@@ -305,6 +305,7 @@ input:checked + .slider:before {
     -webkit-backface-visibility: hidden ;
     y-index: 2;
     font-family: Georgia;
+    font-size: 25px;
     text-align: center;
 }
 
@@ -317,6 +318,7 @@ input:checked + .slider:before {
 }
 
 .flip .card .back {
+    width: 500px;
     -webkit-transform: rotatey(-180deg);
     background: white;
     color: black;

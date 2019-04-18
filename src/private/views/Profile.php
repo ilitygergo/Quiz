@@ -10,6 +10,36 @@ if (isset($_SESSION["USERID"])) {
     $user->getUser($user->getUserID());
 }
 
+if (isset($_GET["username"])) {
+    $user->setUserName($_GET["username"]);
+}
+
+if (isset($_GET["email"])) {
+    $user->setEmail($_GET["email"]);
+}
+
+if (isset($_GET["firstname"])) {
+    $user->setFirstName($_GET["firstname"]);
+}
+
+if (isset($_GET["lastname"])) {
+    $user->setLastName($_GET["lastname"]);
+}
+
+if (isset($_GET["gender"])) {
+    $user->setGender($_GET["gender"]);
+}
+
+if (isset($_GET["pass1"]) && isset($_GET["pass2"]) && ($_GET["pass1"] == $_GET["pass2"])) {
+    $user->setPassword($_GET["pass1"]);
+}
+
+if ($user->validateRegistration()) {
+    $user->saveUser();
+} else {
+    $user->getUser($user->getUserID());
+}
+
 ?>
 
 <div class="flip w3-display-middle">
@@ -52,49 +82,60 @@ if (isset($_SESSION["USERID"])) {
                     <td>554564</td>
                 </tr>
             </table>
-            <button id="btn-my-stat-profile" class="btn btn-info button-left">My Stat</button>
-            <button id="btn-edit-profile" class="btn btn-info button-right"><i class="fas fa-pencil-alt"> Edit</i></button>
+            <button id="btn-my-stat-profile" class="btn btn-warning button-left">My Stat</button>
+            <button id="btn-edit-profile" class="btn btn-warning button-right"><i class="fas fa-pencil-alt"> Edit</i></button>
         </div>
         <div class="face back">
             <form>
                 <div class="form-row">
                     <div class="col">
+                        <label for="inputEmail4">Username</label>
+                        <input name="username" type="text" class="form-control" value="<?=$user->getUserName()?>">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Email</label>
+                        <input name="email" type="email" class="form-control" id="inputEmail4" value="<?=$user->getEmail()?>">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col">
                         <label for="inputEmail4">First name</label>
-                        <input type="text" class="form-control" placeholder="">
+                        <input name="firstname" type="text" class="form-control" value="<?=$user->getFirstName()?>">
                     </div>
                     <div class="col">
                         <label for="inputEmail4">Last name</label>
-                        <input type="text" class="form-control" placeholder="">
+                        <input name="lastname" type="text" class="form-control" value="<?=$user->getLastName()?>">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputEmail4">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                        <label for="inputPassword4">Password</label>
+                        <input name="pass1" type="password" class="form-control" id="inputPassword4" placeholder="Password">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputPassword4">Password</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                        <input name="pass2" type="password" class="form-control" id="inputPassword4" placeholder="Password again">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col">
                         <label for="inputEmail4">Gender</label>
-                        <select class="form-control" id="profile-form-gender">
-                            <option>Male</option>
-                            <option>Female</option>
+                        <select name="gender" class="form-control" id="profile-form-gender">
+                            <option value="male" <?php if ($user->getGender() == 'male') echo 'selected'; ?>>Male</option>
+                            <option value="female" <?php if ($user->getGender() == 'female') echo 'selected'; ?>>Female</option>
                         </select>
                     </div>
                     <div class="col">
                         <label for="inputEmail4">Birthday</label>
-                        <input type="text" class="form-control" placeholder="">
+                        <input name="birthday" type="text" class="form-control" value="<?=$user->getBirthday()?>">
                     </div>
                 </div>
+                <button id="btn-save-profile" class="btn btn-warning">Save</button>
+                <button id="btn-cancel-profile" class="btn btn-warning" type="button">Back</button>
             </form>
-            <button id="btn-save-profile" class="btn btn-info">Save</button>
-            <button id="btn-cancel-profile" class="btn btn-info">Cancel</button>
         </div>
     </div>
 </div>

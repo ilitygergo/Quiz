@@ -17,7 +17,7 @@ if (isset( $_GET["name"]) && isset( $_GET["password"]) && isset( $_GET["email"])
     $user->setBirthday('');
     $user->setGender('');
 
-    if ($user->validate()) {
+    if ($user->validateRegistration()) {
         $user->saveUser();
     }
 }

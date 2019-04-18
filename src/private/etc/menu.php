@@ -23,10 +23,10 @@ if (isset($_SESSION["USERID"])) {
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <i class="fas fa-bars fa-2x" onclick="nyit()" style="cursor: pointer"></i>
+        <i id="menu-icon" class="fas fa-bars fa-2x" onclick="nyit()" style="cursor: pointer"></i>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link mb-0 h5" onclick="nyit()" style="cursor: pointer"><?php
+                <a id="menu-text" class="nav-link mb-0 h5" onclick="nyit()" style="cursor: pointer"><?php
                     if (strpos($_SERVER['REQUEST_URI'], 'index') !== false) {
                         echo 'Home';
                     } elseif (strpos($_SERVER['REQUEST_URI'], 'profile') !== false) {
@@ -42,26 +42,29 @@ if (isset($_SESSION["USERID"])) {
             </li>
         </ul>
         <button class="btn btn-light" type="submit" onclick="goto('profile')"><?=$user->getUserName()?></button>
-        <button class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="goto('login')">Log Out</button>
+        <button class="btn btn-danger my-2 my-sm-0" type="submit" onclick="goto('login')">Log Out</button>
     </div>
 </nav>
 
 <hr style="border-width: 0px;">
 
 <script>
-    function nyit() {
-        document.getElementById("mySidenav").style.width = "250px";
-    }
+    var nyitva = false;
 
-    function zar() {
-        document.getElementById("mySidenav").style.width = "0";
+    function nyit() {
+        nyitva = true;
     }
 
     function goto(url) {
         location.href = url;
     }
 
-    document.body.addEventListener('click', function() {
-        zar();
-    }, true);
+    $(document).click(function(){
+        if (nyitva) {
+            document.getElementById("mySidenav").style.width = "250px";
+            nyitva = false;
+        } else {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    });
 </script>

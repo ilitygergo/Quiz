@@ -7,10 +7,6 @@ $(document).ready(function(){
         console.log('my-stat');
     });
 
-    $("#btn-save-profile").click(function () {
-        $('.flip').find('.card').removeClass('flipped');
-    });
-
     $("#btn-cancel-profile").click(function () {
         $('.flip').find('.card').removeClass('flipped');
     });

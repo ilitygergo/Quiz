@@ -249,7 +249,7 @@ class User {
      * @throws
      * @return bool
      */
-    function validate() {
+    function validateRegistration() {
         try {
             if (!is_string($this->userName)) {
                 throw new Exception("Invalid username!");
@@ -259,13 +259,7 @@ class User {
                 throw new Exception("Invalid email!");
             }
 
-            if (strlen($this->password) < 8) {
-                throw new Exception("Your password must contain at least 8 characters!");
-            } elseif (!preg_match("#[0-9]+#",$this->password)) {
-                throw new Exception("Your password must contain at least 1 number!");
-            } elseif (!preg_match("#[A-Z]+#",$this->password)) {
-                throw new Exception("Your password must contain at least 1 capital letter!");
-            }
+            $this->validPassword($this->getPassword());
 
             $result = Database::query('SELECT userName FROM Usr WHERE userName = \'' . $this->userName . '\'');
 
@@ -284,6 +278,22 @@ class User {
             echo $e->getMessage(), "\n";
             return false;
         }
+    }
+
+    /**
+     * @param $pass
+     * @throws Exception
+     * @return bool
+     */
+    function validPassword($pass){
+        if (strlen($pass) < 8) {
+            throw new Exception("Your password must contain at least 8 characters!");
+        } elseif (!preg_match("#[0-9]+#",$this->password)) {
+            throw new Exception("Your password must contain at least 1 number!");
+        } elseif (!preg_match("#[A-Z]+#",$this->password)) {
+            throw new Exception("Your password must contain at least 1 capital letter!");
+        }
+        return true;
     }
 
     /**
