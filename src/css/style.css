@@ -33,7 +33,7 @@
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #ffc728;
+    background: #F9F9F9;
     width: 100%;
     border: 0;
     padding: 15px;
@@ -45,7 +45,7 @@
 }
 
 .form button:hover,.form button:active,.form button:focus {
-    background: #ffc728;
+    background: #F9F9F9;
 }
 
 .form .message {
@@ -56,7 +56,7 @@
 
 .form .message a {
     padding-right: 400px;
-    color: #ffc728;
+    color: #F9F9F9;
     text-decoration: none;
 }
 
@@ -105,11 +105,11 @@
 }
 
 body {
-    background: #ffc728; /* fallback for old browsers */
-    background: -webkit-linear-gradient(right, #ffc728, #ffc728);
-    background: -moz-linear-gradient(right, #ffc728, #ffc728);
-    background: -o-linear-gradient(right, #ffc728, #ffc728);
-    background: linear-gradient(to left, #ffc728, #ffc728);
+    background: #F9F9F9; /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, #F9F9F9, #F9F9F9);
+    background: -moz-linear-gradient(right, #F9F9F9, #F9F9F9);
+    background: -o-linear-gradient(right, #F9F9F9, #F9F9F9);
+    background: linear-gradient(to left, #F9F9F9, #F9F9F9);
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -125,7 +125,7 @@ p{
     width: 700px;
     font-size: larger;
     text-align: center;
-    color: #ffc728;
+    color: #F9F9F9;
 }
 
 .sidenav {
@@ -151,7 +151,7 @@ p{
 }
 
 .sidenav a:hover {
-    color: #ffc728;
+    color: #F9F9F9;
 }
 
 .sidenav .closebtn {
@@ -167,7 +167,7 @@ span.ez, p, .sidenav , .sidenav a{
 }
 
 #tan{
-    color: #ffc728;
+    color: #F9F9F9;
     font-family: "Lobster", serif;
 }
 
