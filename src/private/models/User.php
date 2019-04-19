@@ -165,6 +165,14 @@ class User {
      */
     public function getBirthday()
     {
+        $str = substr($this->birthday, 9, 10);
+        return $str;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBirthdayFormal() {
         return $this->birthday;
     }
 
@@ -174,7 +182,7 @@ class User {
      */
     public function setBirthday($birthday)
     {
-        $this->birthday = $birthday;
+        $this->birthday = 'TO_DATE(\'' . $birthday . '\',\'MM-DD-YYYY\')';
     }
 
     /**
@@ -261,13 +269,13 @@ class User {
 
             $this->validPassword($this->getPassword());
 
-            $result = Database::query('SELECT userName FROM Usr WHERE userName = \'' . $this->userName . '\'');
+            $result = Database::query('SELECT userName FROM Usr WHERE userName = \'' . $this->getUserName() . '\'');
 
             if (oci_fetch_array($result)) {
                 throw new Exception("Your username has to be unique!");
             }
 
-            $result = Database::query('SELECT email FROM Usr WHERE email = \'' . $this->email . '\'');
+            $result = Database::query('SELECT email FROM Usr WHERE email = \'' . $this->getEmail() . '\'');
 
             if (oci_fetch_array($result)) {
                 throw new Exception("Your email has to be unique!");
@@ -275,7 +283,7 @@ class User {
 
             return true;
         } catch (Exception $e) {
-            echo $e->getMessage(), "\n";
+            echo $e->getMessage();
             return false;
         }
     }
@@ -286,13 +294,19 @@ class User {
      * @return bool
      */
     function validPassword($pass){
-        if (strlen($pass) < 8) {
-            throw new Exception("Your password must contain at least 8 characters!");
-        } elseif (!preg_match("#[0-9]+#",$this->password)) {
-            throw new Exception("Your password must contain at least 1 number!");
-        } elseif (!preg_match("#[A-Z]+#",$this->password)) {
-            throw new Exception("Your password must contain at least 1 capital letter!");
+        try {
+            if (strlen($pass) < 8) {
+                throw new Exception("Your password must contain at least 8 characters!");
+            } elseif (!preg_match("#[0-9]+#",$this->password)) {
+                throw new Exception("Your password must contain at least 1 number!");
+            } elseif (!preg_match("#[A-Z]+#",$this->password)) {
+                throw new Exception("Your password must contain at least 1 capital letter!");
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            return false;
         }
+
         return true;
     }
 
@@ -330,9 +344,73 @@ class User {
 
         $query = 'INSERT INTO Usr values (NULL, \'' . $userName . '\', \'' . $firstName . '\', \'' . $lastName . '\',' .
                 '\'' . $Email . '\', \'' . $Password . '\', ' .
-            'TO_TIMESTAMP(\'' . $Birthday . '\', \'YYYY-MM-DD\') ' . ', \'' . $Gender . '\',' . ' ' . $isAdmin . ')';
+            'TO_DATE(\'' . $Birthday . '\', \'MM-DD-YYYY\') ' . ', \'' . $Gender . '\',' . ' ' . $isAdmin . ')';
 
         Database::query($query);
+    }
+
+    /**
+     * Updates a field in the database
+     * @param $field
+     */
+    function updateField($field) {
+        $set = '';
+
+        if ($field == 'USERNAME' && $this->getUserName() != null) {
+            $set .= $field . ' = \'' . $this->getUserName() . '\'';
+        }
+
+        if ($field == 'FIRSTNAME' && $this->getFirstName() != null) {
+            $set .= $field . ' = \'' . $this->getFirstName() . '\'';
+        }
+
+        if ($field == 'LASTNAME' && $this->getLastName() != null) {
+            $set .= $field . ' = \'' . $this->getLastName() . '\'';
+        }
+
+        if ($field == 'EMAIL' && $this->getEmail() != null) {
+            $set .= $field . ' = \'' . $this->getEmail() . '\'';
+        }
+        if ($field == 'PASSWORD' && $this->getPassword() != null) {
+            $set .= $field . ' = \'' . $this->getPassword() . '\'';
+        }
+
+        if ($field == 'GENDER' && $this->getGender() != null) {
+            $set .= $field . ' = \'' . $this->getGender() . '\'';
+        }
+
+        if ($field == 'BIRTHDAY' && $this->getBirthdayFormal() != null) {
+            $set .= $field . ' = ' . $this->getBirthdayFormal() . '';
+        }
+
+        $sql = 'UPDATE USR SET ' . $set .  ' WHERE USERID = ' . $this->getUserID();
+        Database::query($sql);
+    }
+
+    /**
+     * @param $field
+     * @param $value
+     * @return bool
+     */
+    function uniqueValueInField($field, $value) {
+        try {
+            $sql = 'SELECT USERID FROM Usr WHERE ' . $field . ' = \'' . $value . '\'';
+            $result = Database::query($sql);
+
+            if ($row = oci_fetch_array($result)) {
+                if($row[0] == $this->getUserID()) {
+                    return true;
+                } else {
+                    throw new Exception("A " . $field . ' érték már foglalt.');
+                }
+            } else {
+                return true;
+            }
+
+        } catch (Exception $e) {
+            echo $e->getMessage(), "\n";
+            return false;
+        }
     }
 
     /**

@@ -10,34 +10,47 @@ if (isset($_SESSION["USERID"])) {
     $user->getUser($user->getUserID());
 }
 
-if (isset($_GET["username"])) {
-    $user->setUserName($_GET["username"]);
-}
+if (isset($_GET['submit'])) {
+    if (isset($_GET["username"]) && $user->getUserName() != $_GET["username"]) {
+        if ($user->uniqueValueInField('USERNAME', $_GET["username"])) {
+            $user->setUserName($_GET["username"]);
+            $user->updateField('USERNAME');
+        }
+    }
 
-if (isset($_GET["email"])) {
-    $user->setEmail($_GET["email"]);
-}
+    if (isset($_GET["firstname"]) && $user->getFirstName() != $_GET["firstname"]) {
+        $user->setFirstName($_GET["firstname"]);
+        $user->updateField('FIRSTNAME');
+    }
 
-if (isset($_GET["firstname"])) {
-    $user->setFirstName($_GET["firstname"]);
-}
+    if (isset($_GET["lastname"]) && $user->getLastName() != $_GET["lastname"]) {
+        $user->setLastName($_GET["lastname"]);
+        $user->updateField('LASTNAME');
+    }
 
-if (isset($_GET["lastname"])) {
-    $user->setLastName($_GET["lastname"]);
-}
+    if (isset($_GET["email"]) && $user->getEmail() != $_GET["email"]) {
+        if ($user->uniqueValueInField('EMAIL', $_GET["email"])) {
+            $user->setEmail($_GET["email"]);
+            $user->updateField('EMAIL');
+        }
+    }
 
-if (isset($_GET["gender"])) {
-    $user->setGender($_GET["gender"]);
-}
+    if ($user->getGender() != $_GET["gender"]) {
+        $user->setGender($_GET["gender"]);
+        $user->updateField('GENDER');
+    }
 
-if (isset($_GET["pass1"]) && isset($_GET["pass2"]) && ($_GET["pass1"] == $_GET["pass2"])) {
-    $user->setPassword($_GET["pass1"]);
-}
+    if (isset($_GET["pass1"]) && isset($_GET["pass2"]) && ($_GET["pass1"] == $_GET["pass2"]) && $_GET["pass1"] != null) {
+        $user->setPassword($_GET["pass1"]);
+        if ($user->validPassword($user->getPassword())) {
+            $user->updateField('PASSWORD');
+        }
+    }
 
-if ($user->validateRegistration()) {
-    $user->saveUser();
-} else {
-    $user->getUser($user->getUserID());
+    if (isset($_GET["birthday"]) && $user->getBirthday() != $_GET["birthday"]) {
+        $user->setBirthday($_GET["birthday"]);
+        $user->updateField('BIRTHDAY');
+    }
 }
 
 ?>
@@ -90,7 +103,7 @@ if ($user->validateRegistration()) {
                 <div class="form-row">
                     <div class="col">
                         <label for="inputEmail4">Username</label>
-                        <input name="username" type="text" class="form-control" value="<?=$user->getUserName()?>">
+                        <input name="username" type="text" class="form-control" autocomplete="off" value="<?=$user->getUserName()?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputEmail4">Email</label>
@@ -124,18 +137,24 @@ if ($user->validateRegistration()) {
                     <div class="col">
                         <label for="inputEmail4">Gender</label>
                         <select name="gender" class="form-control" id="profile-form-gender">
-                            <option value="male" <?php if ($user->getGender() == 'male') echo 'selected'; ?>>Male</option>
-                            <option value="female" <?php if ($user->getGender() == 'female') echo 'selected'; ?>>Female</option>
+                            <option value="male" <?php if ($user->getGender() == 'male') echo 'selected'; ?>>male</option>
+                            <option value="female" <?php if ($user->getGender() == 'female') echo 'selected'; ?>>female</option>
                         </select>
                     </div>
                     <div class="col">
                         <label for="inputEmail4">Birthday</label>
-                        <input name="birthday" type="text" class="form-control" value="<?=$user->getBirthday()?>">
+                        <input id="birthday" name="birthday" type="text" class="form-control" autocomplete="off" value="<?=$user->getBirthday()?>">
                     </div>
                 </div>
-                <button id="btn-save-profile" class="btn btn-warning">Save</button>
+                <button id="btn-save-profile" class="btn btn-warning" name="submit">Save</button>
                 <button id="btn-cancel-profile" class="btn btn-warning" type="button">Back</button>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    $( function() {
+        $( "#birthday" ).datepicker();
+    } );
+</script>

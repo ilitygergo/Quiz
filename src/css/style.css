@@ -283,7 +283,7 @@ input:checked + .slider:before {
 .flip {
     -webkit-perspective: 800px;
     width: 400px;
-    height: 400px;
+    height: 370px;
     position: relative;
     margin: auto;
 }
@@ -319,6 +319,7 @@ input:checked + .slider:before {
 
 .flip .card .back {
     width: 500px;
+    height: 400px;
     -webkit-transform: rotatey(-180deg);
     background: white;
     color: black;
