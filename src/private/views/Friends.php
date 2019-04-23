@@ -1,6 +1,7 @@
 <?php
 
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/etc/menu.php');
+require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/controllers/Friends.php');
 
 ?>
 
@@ -15,4 +16,11 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/etc/menu.p
         <td>TEMP</td>
         <td>1997.03.12</td>
     </tr>
+    <?php
+        $id = $_SESSION['USERID'];
+        $friends = new Friends();
+        $friends->printFriends($id);
+    ?>
+
+
 </table>
