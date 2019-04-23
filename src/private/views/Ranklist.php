@@ -1,6 +1,7 @@
 <?php
 
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/etc/menu.php');
+require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/controllers/Ranklist.php');
 
 ?>
 
@@ -10,9 +11,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/etc/menu.p
         <th>Last Name</th>
         <th>Points</th>
     </tr>
-    <tr>
-        <td>TEMP</td>
-        <td>TEMP</td>
-        <td>12442</td>
-    </tr>
+    <?php
+        Ranklist::printRanklist();
+    ?>
 </table>
