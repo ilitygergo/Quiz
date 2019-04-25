@@ -12,6 +12,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/controller
         <th>Points</th>
     </tr>
     <?php
-        Ranklist::printRanklist();
+        $ranklist = new Ranklist();
+        $ranklist->printRanklist();
     ?>
 </table>
