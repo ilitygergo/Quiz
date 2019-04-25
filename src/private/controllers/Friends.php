@@ -57,11 +57,19 @@ class Friends extends Controller {
 
         while ($row = oci_fetch_array($result)) {
             if($row[0] != $userID){
-                if( !array_key_exists($row[1],$friends) ) {
+                if( ! empty($friends) ) {
+                    if (!array_key_exists($row[1], $friends)) {
+                        $friends[$row[0]] = $row[2];
+                    }
+                } else {
                     $friends[$row[0]] = $row[2];
                 }
             } else {
-                if( (!array_key_exists($row[1],$friends)) AND ($row[1] != $userID) ) {
+                if (! empty($friends)) {
+                    if ((!array_key_exists($row[1], $friends)) AND ($row[1] != $userID)) {
+                        $friends[$row[1]] = $row[2];
+                    }
+                } else {
                     $friends[$row[1]] = $row[2];
                 }
             }
