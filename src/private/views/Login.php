@@ -32,7 +32,13 @@ if (isset( $_GET["logemail"]) && isset( $_GET["logpassword"])) {
 
         $_SESSION["USERID"] = $user->getUserID();
 
-        header("Location: http://localhost/Quiz/src/index");
+        $user->getUser($user->getUserID());
+
+        if(!$user->getIsAdmin()) {
+            header("Location: index");
+        } else {
+            header("Location: AdminPanel");
+        }
     }
 }
 
