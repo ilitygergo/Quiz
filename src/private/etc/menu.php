@@ -1,10 +1,9 @@
 <?php
-
+session_start();
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/models/User.php');
 
 $user = new User();
 
-session_start();
 if (isset($_SESSION["USERID"])) {
     $user->setUserID($_SESSION["USERID"]);
     $user->getUser($user->getUserID());
@@ -19,6 +18,9 @@ if (isset($_SESSION["USERID"])) {
     <a href="friends">Friends</a>
     <a href="ranklist">Ranklist</a>
     <a href="played">Played</a>
+    <?php if($user->getIsAdmin()) { ?>
+    <a href="AdminPanel">Admin Panel</a>
+    <?php } ?>
 </span>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">

@@ -9,4 +9,8 @@ class Controller extends Database {
 
         require_once("./private/etc/footer.html");
     }
+
+    public static function action($actionName){
+        require_once("./private/etc/$actionName.php");
+    }
 }
