@@ -27,6 +27,7 @@ create table Challenges(
    topic VARCHAR(30),
    challenger	NUMBER(10),
    challenged	NUMBER(10),
+   status	VARCHAR(30),
    FOREIGN KEY(challenger) REFERENCES Usr(userID),
    FOREIGN KEY(challenged) REFERENCES Usr(userID)
 );
@@ -66,7 +67,7 @@ INSERT into Usr values(NULL, 'test2', 'Teszt', 'Balázs', 'teszbalazs@gmail.com'
 INSERT into Results values(NULL, 5, 0, '2019-02-20', 'History', 2);
 INSERT into Results values(NULL, 8, 0, '2019-02-24', 'History', 3);
 
-INSERT into Challenges values(NULL, 0, '2019-02-20', 'History', 2, 3);
+INSERT into Challenges values(NULL, 0, '2019-02-20', 'History', 2, 3, 'inactive');
 
 INSERT INTO Questions VALUES (NULL, '0', 'history', 'Yuri Gagarin', 'Neil Armstrong', 'Jim Lovell', 'Alan Shepard', 'Who was the first man to go to space?');
 INSERT INTO Questions VALUES (NULL, '0', 'history', 'George Washington', 'Abraham Lincoln', 'John Adams', 'Thomas Jefferson', 'Who was the first president of the USA?');
