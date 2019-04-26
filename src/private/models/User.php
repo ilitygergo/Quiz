@@ -182,7 +182,7 @@ class User {
      */
     public function setBirthday($birthday)
     {
-        $this->birthday = 'TO_DATE(\'' . $birthday . '\',\'MM-DD-YYYY\')';
+        $this->birthday = 'TO_DATE(\'' . $birthday . '\',\'YYYY-MM-DD\')';
     }
 
     /**
@@ -222,14 +222,14 @@ class User {
         $result = Database::query($sql);
 
         if ($row = oci_fetch_array($result)) {
-            $this->userID = $row[0];
-            $this->userName = $row[1];
-            $this->firstName = $row[2];
-            $this->lastName = $row[3];
-            $this->email = $row[4];
-            $this->password = $row[5];
-            $this->birthday = $row[6];
-            $this->gender = $row[7];
+            $this->setUserID($row[0]);
+            $this->setUserName($row[1]);
+            $this->setFirstName($row[2]);
+            $this->setLastName($row[3]);
+            $this->setEmail($row[4]);
+            $this->setPassword($row[5]);
+            $this->setBirthday($row[6]);
+            $this->setGender($row[7]);
             $this->isAdmin = $row[8];
         }
     }
@@ -344,7 +344,7 @@ class User {
 
         $query = 'INSERT INTO Usr values (NULL, \'' . $userName . '\', \'' . $firstName . '\', \'' . $lastName . '\',' .
                 '\'' . $Email . '\', \'' . $Password . '\', ' .
-            'TO_DATE(\'' . $Birthday . '\', \'MM-DD-YYYY\') ' . ', \'' . $Gender . '\',' . ' ' . $isAdmin . ')';
+            'TO_DATE(\'' . $Birthday . '\', \'YYYY-MM-DD\') ' . ', \'' . $Gender . '\',' . ' ' . $isAdmin . ')';
 
         Database::query($query);
     }

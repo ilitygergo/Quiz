@@ -57,14 +57,16 @@ create table Has(
     FOREIGN KEY(questionID) REFERENCES Questions(questionID)
 );
 
-INSERT into Usr values(NULL, 'admin', 'Admin', 'Admin', 'admin123@gmail.com', 'Password123', TO_DATE('03/15/1998', 'MM/DD/YYYY'), 'male', 1);
-INSERT into Usr values(NULL, 'test', 'Teszt', 'Elek', 'tesztelek@gmail.com', 'Password123', TO_DATE('03/15/1998', 'MM/DD/YYYY'), 'male', 0);
-INSERT into Usr values(NULL, 'test2', 'Teszt', 'Balázs', 'teszbalazs@gmail.com', 'Password123', TO_DATE('06/10/1994', 'MM/DD/YYYY'), 'male', 0);
+ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD';
 
-INSERT into Results values(NULL, 5, 0, TO_DATE('02/20/2019', 'MM/DD/YYYY'), 'History', 2);
-INSERT into Results values(NULL, 8, 0, TO_DATE('02/24/2019', 'MM/DD/YYYY'), 'History', 3);
+INSERT into Usr values(NULL, 'admin', 'Admin', 'Admin', 'admin123@gmail.com', 'Password123', '1998-03-15', 'male', 1);
+INSERT into Usr values(NULL, 'test', 'Teszt', 'Elek', 'tesztelek@gmail.com', 'Password123', '1998-03-15', 'male', 0);
+INSERT into Usr values(NULL, 'test2', 'Teszt', 'Balázs', 'teszbalazs@gmail.com', 'Password123', '1994-06-10', 'male', 0);
 
-INSERT into Challenges values(NULL, 0, TO_DATE('02/20/2019', 'MM/DD/YYYY'), 'History', 2, 3);
+INSERT into Results values(NULL, 5, 0, '2019-02-20', 'History', 2);
+INSERT into Results values(NULL, 8, 0, '2019-02-24', 'History', 3);
+
+INSERT into Challenges values(NULL, 0, '2019-02-20', 'History', 2, 3);
 
 INSERT INTO Questions VALUES (NULL, '0', 'history', 'Yuri Gagarin', 'Neil Armstrong', 'Jim Lovell', 'Alan Shepard', 'Who was the first man to go to space?');
 INSERT INTO Questions VALUES (NULL, '0', 'history', 'George Washington', 'Abraham Lincoln', 'John Adams', 'Thomas Jefferson', 'Who was the first president of the USA?');
@@ -301,7 +303,7 @@ INSERT INTO Questions VALUES (NULL, '1', 'literature', '14', '20', '12', '8', 'H
 INSERT INTO Questions VALUES (NULL, '0', 'literature', 'Raven', 'Cat', 'Monkey', 'Mouse', 'Edgar Allen Poe wrote a famous poem about this animal.');
 INSERT INTO Questions VALUES (NULL, '0', 'literature', 'Spanish', 'American', 'French', 'Italian', 'What Is The Nationality Of Picasso?');
 
-INSERT into Friends values(2, 3, TO_DATE('02/19/2019', 'MM/DD/YYYY'), 'active');
+INSERT into Friends values(2, 3, '2019-02-19', 'active');
 
 INSERT into Has values(1, 1);
 INSERT into Has values(1, 2);
