@@ -60,9 +60,9 @@ create table Has(
 
 ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD';
 
-INSERT into Usr values(NULL, 'admin', 'Admin', 'Admin', 'admin123@gmail.com', 'Password123', '1998-03-15', 'male', 1);
-INSERT into Usr values(NULL, 'test', 'Teszt', 'Elek', 'tesztelek@gmail.com', 'Password123', '1998-03-15', 'male', 0);
-INSERT into Usr values(NULL, 'test2', 'Teszt', 'Balázs', 'teszbalazs@gmail.com', 'Password123', '1994-06-10', 'male', 0);
+INSERT into Usr values(NULL, 'admin', 'Admin', 'Admin', 'admin@gmail.com', 'Password123', '1998-03-15', 'male', 1);
+INSERT into Usr values(NULL, 'test', 'Teszt', 'Elek', 'teszt@gmail.com', 'Password123', '1998-03-15', 'male', 0);
+INSERT into Usr values(NULL, 'test2', 'Teszt', 'Balázs', 'teszt2@gmail.com', 'Password123', '1994-06-10', 'male', 0);
 
 INSERT into Results values(NULL, 5, 0, '2019-02-20', 'History', 2);
 INSERT into Results values(NULL, 8, 0, '2019-02-24', 'History', 3);
