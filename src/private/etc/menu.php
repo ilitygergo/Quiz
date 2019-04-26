@@ -16,7 +16,9 @@ if (isset($_SESSION["USERID"])) {
     <?php if($user->getIsAdmin()) { ?>
         <a href="AdminPanel">Admin Panel</a>
     <?php } ?>
+    <?php if(!$user->getIsAdmin()) { ?>
     <a href="index">Home</a>
+    <?php }?>
     <a href="profile">Profile</a>
     <?php if(!$user->getIsAdmin()) { ?>
     <a href="friends">Friends</a>
