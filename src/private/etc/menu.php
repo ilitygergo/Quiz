@@ -13,11 +13,17 @@ if (isset($_SESSION["USERID"])) {
 
 <span id="mySidenav" class="sidenav">
     <span class="fas fa-brain fa-2x quizzy">Quizzy</span>
+    <?php if($user->getIsAdmin()) { ?>
     <a href="index">Home</a>
+    <?php }?>
     <a href="profile">Profile</a>
+    <?php if(!$user->getIsAdmin()) { ?>
     <a href="friends">Friends</a>
+    <?php }?>
     <a href="ranklist">Ranklist</a>
+    <?php if(!$user->getIsAdmin()) { ?>
     <a href="played">Played</a>
+    <?php }?>
     <?php if($user->getIsAdmin()) { ?>
     <a href="AdminPanel">Admin Panel</a>
     <?php } ?>
