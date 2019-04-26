@@ -1,6 +1,11 @@
 <?php
 
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/etc/menu.php');
+$user = new User();
+$user->getUser($_SESSION['USERID']);
+if(!$user->getIsAdmin()){
+    header("Location: index");
+}
 
 ?>
 
