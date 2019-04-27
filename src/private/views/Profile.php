@@ -155,6 +155,6 @@ if (isset($_GET['submit'])) {
 
 <script>
     $( function() {
-        $( "#birthday" ).datepicker();
+        $( "#birthday" ).datepicker({ dateFormat: 'yy-mm-dd' });
     } );
 </script>

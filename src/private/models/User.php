@@ -422,4 +422,22 @@ class User {
             $this->getEmail() . ' ' . $this->getPassword() . ' ' . $this->getBirthday() . ' ' .
             $this->getGender() . ' ' . $this->getIsAdmin();
     }
+
+    /**
+     * Returns a random USERID
+     * @param $ID
+     * @return mixed
+     */
+    public function getRandomUser($ID) {
+        $users = [];
+
+        $sql = 'SELECT USERID FROM Usr WHERE USERID != ' . $ID . ' AND ISADMIN = ' . 0;
+        $result = Database::query($sql);
+
+        while ($row = oci_fetch_array($result)) {
+            array_push($users, $row[0]);
+        }
+
+        return $users[array_rand($users)];
+    }
 }
