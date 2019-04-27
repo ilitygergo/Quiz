@@ -44,6 +44,11 @@ class Questions
     private $question;
 
     /**
+     * @var array
+     */
+    private $questions = [];
+
+    /**
      * Question constructor.
      */
     public function __construct()
@@ -187,10 +192,17 @@ class Questions
     }
 
     /**
+     * @param $item
+     */
+    public function pushToQuestions($item) {
+        array_push($this->questions, $item);
+    }
+
+    /**
      * @param $questionID
      */
-    function getQuestions($questionID) {
-        $sql = 'SELECT * FROM Question WHERE QUESTIONID = \'' . $questionID. '\'';
+    public function getQuestions($questionID) {
+        $sql = 'SELECT * FROM Questions WHERE QUESTIONID = \'' . $questionID. '\'';
         $result = Database::query($sql);
 
         if ($row = oci_fetch_array($result)) {
@@ -212,7 +224,7 @@ class Questions
      * @param $hard
      * @return mixed
      */
-    function getRandomQuestion($topic, $stack, $hard) {
+    public function getRandomQuestion($topic, $stack, $hard) {
         $questions = [];
         $alreadyLogged = '';
 
@@ -234,4 +246,24 @@ class Questions
         return $question;
     }
 
+    /**
+     * @return mixed
+     */
+    public function random() {
+        while (true) {
+            $arr = [
+                $this->getWrong1(),
+                $this->getWrong2(),
+                $this->getWrong3(),
+                $this->getCorrect(),
+            ];
+
+            $question = $arr[array_rand($arr)];
+
+            if (!in_array($question, $this->questions)) {
+                $this->pushToQuestions($question);
+                return $question;
+            }
+        }
+    }
 }

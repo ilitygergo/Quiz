@@ -41,20 +41,8 @@ class Index extends Controller {
     /**
      * @param $challenger
      */
-    public function createChallengeAndQuestionList($hardness, $topic, $challenger) {
-        $stack = [];
-        $question = null;
-        $challenged = $this->user->getRandomUser($challenger);
-
-        //Creating the challenge
-        $this->challenges->setHard($hardness);
-        $this->challenges->setTime(date("Y-m-d"));
-        $this->challenges->setTopic($topic);
-        $this->challenges->setChallengerID($challenger);
-        $this->challenges->setChallengedID($challenged);
-        $this->challenges->setStatus('active');
-
-        $this->challenges->saveChallenges();
+    public function createChallenge($hardness, $topic, $challenger) {
+        $this->saveChallenge($hardness, $topic, $challenger);
 
         $challengeID = $this->challenges->getSpecificChallenge(
             $this->challenges->getTime(),
@@ -67,9 +55,40 @@ class Index extends Controller {
             return;
         }
 
-        //Updating the Has table with the questions
-        for ($x = 0; $x <= 10; $x++) {
-            $question = $this->questions->getRandomQuestion($topic, $stack, $hardness);
+        $questions = $this->saveQuestionsToHas($challengeID);
+
+        $_SESSION["QUESTIONID"] = $questions;
+
+        header("Location: game");
+    }
+
+    public function saveChallenge($hardness, $topic, $challenger) {
+        $challenged = $this->user->getRandomUser($challenger);
+
+        $this->challenges->setHard($hardness);
+        $this->challenges->setTime(date("Y-m-d"));
+        $this->challenges->setTopic($topic);
+        $this->challenges->setChallengerID($challenger);
+        $this->challenges->setChallengedID($challenged);
+        $this->challenges->setStatus('active');
+
+        $this->challenges->saveChallenges();
+    }
+
+    /**
+     * @param $challengeID
+     * @return array
+     */
+    public function saveQuestionsToHas($challengeID) {
+        $question = null;
+        $stack = [];
+
+        for ($x = 0; $x < 10; $x++) {
+            $question = $this->questions->getRandomQuestion(
+                $this->challenges->getTopic(),
+                $stack,
+                $this->challenges->getHard()
+            );
             array_push($stack, $question);
 
             $this->has->setChallengeID($challengeID);
@@ -77,7 +96,7 @@ class Index extends Controller {
             $this->has->saveHas();
         }
 
-        header("Location: game");
+        return $stack;
     }
 
 }

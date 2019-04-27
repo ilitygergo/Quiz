@@ -32,7 +32,7 @@ if (isset($_GET["history"]) || isset($_GET["geography"]) || isset($_GET["science
 
     $topic =  $topics[array_rand($topics)];
 
-    $index->createChallengeAndQuestionList($hardness, $topic, $_SESSION["USERID"]);
+    $index->createChallenge($hardness, $topic, $_SESSION["USERID"]);
 }
 
 ?>
