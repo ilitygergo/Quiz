@@ -4,7 +4,6 @@ class Ranklist extends Controller {
 
     private $ranklist = null;
 
-
     public function __construct()
     {
         $this->ranklist = null;

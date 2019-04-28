@@ -11,11 +11,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/etc/gameCo
         <th>First Name</th>
         <th>Last Name</th>
         <th>Since</th>
-    </tr>
-    <tr>
-        <td>TEMP</td>
-        <td>TEMP</td>
-        <td>1997.03.12</td>
+        <th></th>
     </tr>
     <?php
         $id = $_SESSION['USERID'];
