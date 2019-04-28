@@ -1,5 +1,6 @@
 <?php
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/etc/menu.php');
+require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/etc/results.php');
 
 if (isset($_GET["history"]) || isset($_GET["geography"]) || isset($_GET["science"]) || isset($_GET["technology"]) || isset($_GET["literature"])) {
     $topics = [];

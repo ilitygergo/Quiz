@@ -177,7 +177,7 @@ class Challenges{
      * @param $challengeID
      */
     function getChallange($challengeID) {
-        $sql = 'SELECT * FROM Challenge WHERE CHALLENGEID = \'' . $challengeID. '\'';
+        $sql = 'SELECT * FROM Challenges WHERE CHALLENGEID = \'' . $challengeID. '\'';
         $result = Database::query($sql);
 
         if ($row = oci_fetch_array($result)) {

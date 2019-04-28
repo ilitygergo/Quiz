@@ -58,6 +58,7 @@ class Index extends Controller {
         $questions = $this->saveQuestionsToHas($challengeID);
 
         $_SESSION["QUESTIONID"] = $questions;
+        $_SESSION["CHALLENGEID"] = $challengeID;
 
         header("Location: game");
     }
