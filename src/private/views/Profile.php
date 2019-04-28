@@ -3,8 +3,10 @@
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/etc/menu.php');
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/models/User.php');
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/etc/gameControl.php');
+require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/controllers/Ranklist.php');
 
 $user = new User();
+$ranklist = new Ranklist();
 
 if (isset($_SESSION["USERID"])) {
     $user->setUserID($_SESSION["USERID"]);
@@ -92,7 +94,7 @@ if (isset($_GET['submit'])) {
                 </tr>
 
                 <tr>
-                    <td>Score:</td>
+                    <td>Points:</td>
                     <td>554564</td>
                 </tr>
             </table>

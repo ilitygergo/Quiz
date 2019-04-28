@@ -25,6 +25,7 @@ $ans4 =  $question->random();
     <div class="w3-animate-top"> <h4><?=$question->getQuestion()?></h4></div>
     <hr/>
     <div <h1><?=$question->getTopic()?></h1></div>
+<div><h1 id="message-box"></h1><b></b></div>
     <table class="w3-display-middle" style="margin-top: 70px">
         <tr style="padding: 30px">
             <td><div id="ans1" class="w3-btn w3-round-xxlarge w3-amber" onclick="getAnswer('ans1')" style="width: 200px"><?php echo $ans1 ?></div></td>
@@ -63,8 +64,11 @@ $ans4 =  $question->random();
             {
                 answer: answer
             },
-            function() {
-                location.reload();
+            function(data) {
+
+                $('#message-box').text(data);
+
+                setTimeout(function(){ location.reload(); }, 2000);
             }
         );
     }

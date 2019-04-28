@@ -15,4 +15,6 @@ if(isset($_POST['answer']) && !empty($_POST['answer'])) {
     }
 
     $_SESSION["OFFSET"] += 1;
+
+    echo $question->getCorrect();
 }

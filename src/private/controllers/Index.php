@@ -42,7 +42,9 @@ class Index extends Controller {
      * @param $challenger
      */
     public function createChallenge($hardness, $topic, $challenger) {
-        $this->saveChallenge($hardness, $topic, $challenger);
+        if(!$this->saveChallenge($hardness, $topic, $challenger)) {
+            return;
+        }
 
         $challengeID = $this->challenges->getSpecificChallenge(
             $this->challenges->getTime(),
@@ -63,6 +65,12 @@ class Index extends Controller {
         header("Location: game");
     }
 
+    /**
+     * @param $hardness
+     * @param $topic
+     * @param $challenger
+     * @return bool
+     */
     public function saveChallenge($hardness, $topic, $challenger) {
         $challenged = $this->user->getRandomUser($challenger);
 
@@ -73,7 +81,12 @@ class Index extends Controller {
         $this->challenges->setChallengedID($challenged);
         $this->challenges->setStatus('active');
 
-        $this->challenges->saveChallenges();
+        if($this->challenges->validate()) {
+            $this->challenges->saveChallenges();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

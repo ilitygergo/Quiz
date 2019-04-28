@@ -90,6 +90,8 @@ class Friends extends Controller {
             echo '<td>'.$user->getFirstName().'</td>';
             echo '<td>'.$user->getLastName().'</td>';
             echo '<td>'.$since.'</td>';
+            echo '<td><button type="button" class="btn btn-warning">Challenge</button>   ';
+            echo '<button type="button" class="btn btn-danger">Delete</button></td>';
             echo '</tr>';
 
         }
