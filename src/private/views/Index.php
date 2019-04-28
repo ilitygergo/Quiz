@@ -2,10 +2,11 @@
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/etc/menu.php');
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/etc/results.php');
 
+$index = new Index();
+
 if (isset($_GET["history"]) || isset($_GET["geography"]) || isset($_GET["science"]) || isset($_GET["technology"]) || isset($_GET["literature"])) {
     $topics = [];
     $hardness = 0;
-    $index = new Index();
 
     if(isset($_GET["history"])) {
         array_push($topics, 'history');
@@ -35,6 +36,8 @@ if (isset($_GET["history"]) || isset($_GET["geography"]) || isset($_GET["science
 
     $index->createChallenge($hardness, $topic, $_SESSION["USERID"]);
 }
+
+$challenges = $index->getChallengerNames($_SESSION["USERID"]);
 
 ?>
 
@@ -105,4 +108,21 @@ if (isset($_GET["history"]) || isset($_GET["geography"]) || isset($_GET["science
             </tr>
         </table>
     </form>
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Active challenges
+        </button>
+        <div class="dropdown-menu">
+            <?php echo $challenges ?>
+        </div>
+    </div>
 </div>
+
+<script>
+
+    function test() {
+        console.log('valami');
+    }
+
+</script>

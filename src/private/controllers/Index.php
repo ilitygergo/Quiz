@@ -113,4 +113,32 @@ class Index extends Controller {
         return $stack;
     }
 
+    public function getChallengerNames($challenged) {
+        $nameids = [];
+        $names = [];
+        $ret = '';
+
+        $sql1 = 'SELECT CHALLENGER FROM Challenges WHERE CHALLENGED = ' . $challenged . ' AND STATUS = \'active\'' ;
+        $result1 = Database::query($sql1);
+
+        while ($row1 = oci_fetch_array($result1)) {
+            array_push( $nameids, $row1[0]);
+        }
+
+        foreach ($nameids as $nameid) {
+            $sql2 = 'SELECT USERNAME FROM Usr WHERE USERID = ' . $nameid ;
+            $result2 = Database::query($sql2);
+
+            if ($row2 = oci_fetch_array($result2)) {
+                array_push( $names, $row2[0]);
+            }
+        }
+
+        foreach ($names as $name) {
+            $ret .= '<a class="dropdown-item" href="#" onclick="test()">' . $name . '</a>';
+        }
+
+        return $ret;
+    }
+
 }
