@@ -177,7 +177,7 @@ class User {
     }
 
     /**
-     * Birthday has to added as YYYY-MM-DD string
+     * Birthday has to be added as YYYY-MM-DD string
      * @param mixed $birthday
      */
     public function setBirthday($birthday)
@@ -217,6 +217,9 @@ class User {
         $this->isAdmin = $isAdmin;
     }
 
+    /**
+     * @param $userID
+     */
     function getUser($userID) {
         $sql = 'SELECT * FROM Usr WHERE USERID = \'' . $userID . '\'';
         $result = Database::query($sql);

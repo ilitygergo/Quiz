@@ -1,13 +1,16 @@
 <?php
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/models/Questions.php');
 
-session_start();
-if (!isset($_SESSION["QUESTIONID"])) {
-    header("Location: index");
-}
+$game = new Game();
+$game->setOffsets();
 
 $question = new Questions();
-$question->getQuestions($_SESSION["QUESTIONID"][1]);
+$question->getQuestions($_SESSION["QUESTIONID"][$_SESSION["OFFSET"]]);
+
+$ans1 =  $question->random();
+$ans2 =  $question->random();
+$ans3 =  $question->random();
+$ans4 =  $question->random();
 
 ?>
 
@@ -24,13 +27,46 @@ $question->getQuestions($_SESSION["QUESTIONID"][1]);
     <div <h1><?=$question->getTopic()?></h1></div>
     <table class="w3-display-middle" style="margin-top: 70px">
         <tr style="padding: 30px">
-            <td><div id="ans1" class="w3-btn w3-round-xxlarge w3-amber" style="width: 200px"><?php echo $question->random()?></div></td>
-            <td ><div id="ans2" class="w3-btn w3-round-xxlarge w3-amber" style="width: 200px"><?php echo $question->random()?></div></td>
+            <td><div id="ans1" class="w3-btn w3-round-xxlarge w3-amber" onclick="getAnswer('ans1')" style="width: 200px"><?php echo $ans1 ?></div></td>
+            <td ><div id="ans2" class="w3-btn w3-round-xxlarge w3-amber" onclick="getAnswer('ans2')" style="width: 200px"><?php echo $ans2 ?></div></td>
         </tr>
         <tr>
-            <td ><div id="ans3" class="w3-btn w3-round-xxlarge w3-amber" style="width: 200px"><?php echo $question->random()?></div></td>
-            <td ><div id="ans4" class="w3-btn w3-round-xxlarge w3-amber" style="width: 200px"><?php echo $question->random()?></div></td>
+            <td ><div id="ans3" class="w3-btn w3-round-xxlarge w3-amber" onclick="getAnswer('ans3')" style="width: 200px"><?php echo $ans3 ?></div></td>
+            <td ><div id="ans4" class="w3-btn w3-round-xxlarge w3-amber" onclick="getAnswer('ans4')" style="width: 200px"><?php echo $ans4 ?></div></td>
         </tr>
     </table>
 
 </div>
+
+<script>
+
+    function getAnswer(ans) {
+        var answer = null;
+
+        switch(ans) {
+            case 'ans1':
+                answer = $(ans1).context.innerHTML;
+                break;
+            case 'ans2':
+                answer = $(ans2).context.innerHTML;
+                break;
+            case 'ans3':
+                answer = $(ans3).context.innerHTML;
+                break;
+            case 'ans4':
+                answer = $(ans4).context.innerHTML;
+                break;
+        }
+
+        $.post(
+            'private/etc/nextQuestion.php',
+            {
+                answer: answer
+            },
+            function() {
+                location.reload();
+            }
+        );
+    }
+
+</script>
