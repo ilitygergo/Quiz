@@ -154,9 +154,15 @@ class Results
             $this->setResultsID($row[0]);
             $this->setScore($row[1]);
             $this->setHard($row[2]);
-            $this->setTime($row[3]);
             $this->setTopic($row[4]);
             $this->setUserID($row[5]);
+        }
+
+        $sql = 'SELECT to_char(TIME, \'yyyy-mm-dd\') FROM Results WHERE RESULTSID = \'' . $resultsID . '\'';
+        $result = Database::query($sql);
+
+        if ($row = oci_fetch_array($result)) {
+            $this->setTime($row[0]);
         }
     }
 
