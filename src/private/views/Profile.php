@@ -1,12 +1,12 @@
 <?php
-
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/etc/menu.php');
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/models/User.php');
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/etc/gameControl.php');
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/controllers/Ranklist.php');
+require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/controllers/Profile.php');
 
 $user = new User();
-$ranklist = new Ranklist();
+$profile = new Profile();
 
 if (isset($_SESSION["USERID"])) {
     $user->setUserID($_SESSION["USERID"]);
@@ -90,17 +90,18 @@ if (isset($_GET['submit'])) {
 
                 <tr>
                     <td>Place:</td>
-                    <td>1001231.</td>
+                    <td><?=$profile->getUserPlace($_SESSION['USERID']);?></td>
                 </tr>
 
                 <tr>
                     <td>Points:</td>
-                    <td>554564</td>
+                    <td><?=$profile->getUserPoints($_SESSION['USERID']);?></td>
                 </tr>
             </table>
-            <button id="btn-my-stat-profile" class="btn btn-warning button-left">My Stat</button>
+            <button id="btn-my-stat-profile" class="btn btn-warning button-left"  data-toggle="modal" data-target="#Mymodal">My Stat</button>
             <button id="btn-edit-profile" class="btn btn-warning button-right"><i class="fas fa-pencil-alt"> Edit</i></button>
         </div>
+
         <div class="face back">
             <form>
                 <div class="form-row">
@@ -156,8 +157,60 @@ if (isset($_GET['submit'])) {
     </div>
 </div>
 
+<div class="modal fade" id="Mymodal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Played games by category:
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="content">
+                    <table style="width:100%">
+                        <tr>
+                            <td></td>
+                            <td>Games</td>
+                            <td>Points</td>
+                        </tr>
+                        <tr>
+                            <td>History:</td>
+                            <td><?=$profile->getNumberOfGames($_SESSION['USERID'], 'history')?></td>
+                            <td><?=$profile->countPointsByTopic($_SESSION['USERID'], 'history')?></td>
+                        </tr>
+                        <tr>
+                            <td>Geography:</td>
+                            <td><?=$profile->getNumberOfGames($_SESSION['USERID'], 'geography')?></td>
+                            <td><?=$profile->countPointsByTopic($_SESSION['USERID'], 'geography')?></td>
+                        </tr>
+                        <tr>
+                            <td>Science:</td>
+                            <td><?=$profile->getNumberOfGames($_SESSION['USERID'], 'science')?></td>
+                            <td><?=$profile->countPointsByTopic($_SESSION['USERID'], 'science')?></td>
+                        </tr>
+                        <tr>
+                            <td>Technology:</td>
+                            <td><?=$profile->getNumberOfGames($_SESSION['USERID'], 'technology')?></td>
+                            <td><?=$profile->countPointsByTopic($_SESSION['USERID'], 'technology')?></td>
+                        </tr>
+                        <tr>
+                            <td>Literature:</td>
+                            <td><?=$profile->getNumberOfGames($_SESSION['USERID'], 'literature')?></td>
+                            <td><?=$profile->countPointsByTopic($_SESSION['USERID'], 'literature')?></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
+
     $( function() {
         $( "#birthday" ).datepicker({ dateFormat: 'yy-mm-dd' });
     } );
+
 </script>
