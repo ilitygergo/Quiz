@@ -183,11 +183,17 @@ class Challenges{
         if ($row = oci_fetch_array($result)) {
             $this->setChallengeID($row[0]);
             $this->setHard($row[1]);
-            $this->setTime($row[2]);
             $this->setTopic($row[3]);
             $this->setChallengerID($row[4]);
             $this->setChallengedID($row[5]);
             $this->setStatus($row[6]);
+        }
+
+        $sql = 'SELECT to_char(TIME, \'yyyy-mm-dd\') FROM Challenges WHERE CHALLENGEID = \'' . $challengeID. '\'';
+        $result = Database::query($sql);
+
+        if ($row = oci_fetch_array($result)) {
+            $this->setTime($row[0]);
         }
     }
 

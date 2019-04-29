@@ -231,9 +231,15 @@ class User {
             $this->setLastName($row[3]);
             $this->setEmail($row[4]);
             $this->setPassword($row[5]);
-            $this->setBirthday($row[6]);
             $this->setGender($row[7]);
             $this->isAdmin = $row[8];
+        }
+
+        $sql = 'SELECT to_char(BIRTHDAY, \'yyyy-mm-dd\') FROM Usr WHERE USERID = \'' . $userID . '\'';
+        $result = Database::query($sql);
+
+        if ($row = oci_fetch_array($result)) {
+            $this->setBirthday($row[0]);
         }
     }
 
