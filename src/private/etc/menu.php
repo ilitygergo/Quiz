@@ -23,6 +23,9 @@ if (isset($_SESSION["USERID"])) {
     <?php if(!$user->getIsAdmin()) { ?>
     <a href="friends">Friends</a>
     <?php }?>
+    <?php if(!$user->getIsAdmin()) { ?>
+        <a href="Users">Users</a>
+    <?php }?>
     <a href="ranklist">Ranklist</a>
     <?php if(!$user->getIsAdmin()) { ?>
     <a href="played">Played</a>
@@ -45,7 +48,10 @@ if (isset($_SESSION["USERID"])) {
                         echo 'Ranklist';
                     } elseif (strpos($_SERVER['REQUEST_URI'], 'played') !== false) {
                         echo 'Played';
+                    } elseif (strpos($_SERVER['REQUEST_URI'], 'AdminPanel') !== false) {
+                        echo 'AdminPanel';
                     }
+
                     ?> <span class="sr-only">(current)</span></a>
             </li>
         </ul>
