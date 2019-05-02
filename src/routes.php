@@ -35,3 +35,11 @@ Route::set('AdminPanel', function() {
 Route::set('deleteUser', function() {
     Ranklist::action('deleteUser');
 });
+
+Route::set('Users', function(){
+    Users::view('Users');
+});
+
+Route::set('addFriend', function(){
+    Users::action('addFriend');
+});
