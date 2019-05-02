@@ -177,7 +177,7 @@ class User {
     }
 
     /**
-     * Birthday has to added as YYYY-MM-DD string
+     * Birthday has to be added as YYYY-MM-DD string
      * @param mixed $birthday
      */
     public function setBirthday($birthday)
@@ -217,6 +217,9 @@ class User {
         $this->isAdmin = $isAdmin;
     }
 
+    /**
+     * @param $userID
+     */
     function getUser($userID) {
         $sql = 'SELECT * FROM Usr WHERE USERID = \'' . $userID . '\'';
         $result = Database::query($sql);
@@ -228,9 +231,15 @@ class User {
             $this->setLastName($row[3]);
             $this->setEmail($row[4]);
             $this->setPassword($row[5]);
-            $this->setBirthday($row[6]);
             $this->setGender($row[7]);
             $this->isAdmin = $row[8];
+        }
+
+        $sql = 'SELECT to_char(BIRTHDAY, \'yyyy-mm-dd\') FROM Usr WHERE USERID = \'' . $userID . '\'';
+        $result = Database::query($sql);
+
+        if ($row = oci_fetch_array($result)) {
+            $this->setBirthday($row[0]);
         }
     }
 
@@ -421,5 +430,23 @@ class User {
         return $str = $this->getUserName() . ' ' . $this->getFirstName() . ' ' . $this->getLastName() . ' ' .
             $this->getEmail() . ' ' . $this->getPassword() . ' ' . $this->getBirthday() . ' ' .
             $this->getGender() . ' ' . $this->getIsAdmin();
+    }
+
+    /**
+     * Returns a random USERID
+     * @param $ID
+     * @return mixed
+     */
+    public function getRandomUser($ID) {
+        $users = [];
+
+        $sql = 'SELECT USERID FROM Usr WHERE USERID != ' . $ID . ' AND ISADMIN = ' . 0;
+        $result = Database::query($sql);
+
+        while ($row = oci_fetch_array($result)) {
+            array_push($users, $row[0]);
+        }
+
+        return $users[array_rand($users)];
     }
 }

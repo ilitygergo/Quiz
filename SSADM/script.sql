@@ -27,6 +27,7 @@ create table Challenges(
    topic VARCHAR(30),
    challenger	NUMBER(10),
    challenged	NUMBER(10),
+   status	VARCHAR(30),
    FOREIGN KEY(challenger) REFERENCES Usr(userID),
    FOREIGN KEY(challenged) REFERENCES Usr(userID)
 );
@@ -59,14 +60,14 @@ create table Has(
 
 ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD';
 
-INSERT into Usr values(NULL, 'admin', 'Admin', 'Admin', 'admin123@gmail.com', 'Password123', '1998-03-15', 'male', 1);
-INSERT into Usr values(NULL, 'test', 'Teszt', 'Elek', 'tesztelek@gmail.com', 'Password123', '1998-03-15', 'male', 0);
-INSERT into Usr values(NULL, 'test2', 'Teszt', 'Balázs', 'teszbalazs@gmail.com', 'Password123', '1994-06-10', 'male', 0);
+INSERT into Usr values(NULL, 'admin', 'Admin', 'Admin', 'admin@gmail.com', 'Password123', '1998-03-15', 'male', 1);
+INSERT into Usr values(NULL, 'test', 'Teszt', 'Elek', 'teszt@gmail.com', 'Password123', '1998-03-15', 'male', 0);
+INSERT into Usr values(NULL, 'test2', 'Teszt', 'Balázs', 'teszt2@gmail.com', 'Password123', '1994-06-10', 'male', 0);
 
-INSERT into Results values(NULL, 5, 0, '2019-02-20', 'History', 2);
-INSERT into Results values(NULL, 8, 0, '2019-02-24', 'History', 3);
+INSERT into Results values(NULL, 5, 0, '2019-02-20', 'history', 2);
+INSERT into Results values(NULL, 8, 0, '2019-02-24', 'history', 3);
 
-INSERT into Challenges values(NULL, 0, '2019-02-20', 'History', 2, 3);
+INSERT into Challenges values(NULL, 0, '2019-02-20', 'history', 2, 3, 'inactive');
 
 INSERT INTO Questions VALUES (NULL, '0', 'history', 'Yuri Gagarin', 'Neil Armstrong', 'Jim Lovell', 'Alan Shepard', 'Who was the first man to go to space?');
 INSERT INTO Questions VALUES (NULL, '0', 'history', 'George Washington', 'Abraham Lincoln', 'John Adams', 'Thomas Jefferson', 'Who was the first president of the USA?');
