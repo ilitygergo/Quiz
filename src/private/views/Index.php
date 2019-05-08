@@ -37,6 +37,10 @@ if (isset($_GET["history"]) || isset($_GET["geography"]) || isset($_GET["science
     $index->createChallenge($hardness, $topic, $_SESSION["USERID"]);
 }
 
+if (isset($_POST["username"])) {
+    $index->play($_SESSION["USERID"], $_POST["username"]);
+}
+
 $challenges = $index->getChallengerNames($_SESSION["USERID"]);
 
 ?>
@@ -59,7 +63,7 @@ $challenges = $index->getChallengerNames($_SESSION["USERID"]);
                 <td id="themetd">History</td>
                 <td id="themetd">
                     <label class="switch">
-                        <input id="history" name="history" type="checkbox" checked>
+                        <input name="history" type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
                 </td>
@@ -67,7 +71,7 @@ $challenges = $index->getChallengerNames($_SESSION["USERID"]);
                 <td id="themetd">Geography</td>
                 <td id="themetd">
                     <label class="switch">
-                        <input id="geography" name="geography" type="checkbox" checked>
+                        <input name="geography" type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
                 </td>
@@ -76,7 +80,7 @@ $challenges = $index->getChallengerNames($_SESSION["USERID"]);
                 <td id="themetd">Science</td>
                 <td id="themetd">
                     <label class="switch">
-                        <input id="science" name="science" type="checkbox" checked>
+                        <input name="science" type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
                 </td>
@@ -84,7 +88,7 @@ $challenges = $index->getChallengerNames($_SESSION["USERID"]);
                 <td id="themetd">Technology</td>
                 <td id="themetd">
                     <label class="switch">
-                        <input id="technology" name="technology" type="checkbox" checked>
+                        <input name="technology" type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
                 </td>
@@ -93,7 +97,7 @@ $challenges = $index->getChallengerNames($_SESSION["USERID"]);
                 <td id="themetd">Literature</td>
                 <td id="themetd">
                     <label class="switch">
-                        <input id="literature" name="literature" type="checkbox" checked>
+                        <input name="literature" type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
                 </td>
@@ -101,7 +105,7 @@ $challenges = $index->getChallengerNames($_SESSION["USERID"]);
                 <td id="themetd"><b>Hard</b></td>
                 <td id="themetd">
                     <label class="switch">
-                        <input id="hard" name="hard" type="checkbox">
+                        <input name="hard" type="checkbox">
                         <span class="slider round"></span>
                     </label>
                 </td>
@@ -109,20 +113,20 @@ $challenges = $index->getChallengerNames($_SESSION["USERID"]);
         </table>
     </form>
 
-    <div class="btn-group">
-        <button type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Active challenges
-        </button>
-        <div class="dropdown-menu">
-            <?php echo $challenges ?>
+    <?php if($challenges) : ?>
+        <div class="btn-group">
+            <button type="button" name="challenge-form" class="btn btn-danger dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Active challenges
+            </button>
+            <div class="dropdown-menu">
+                <?php echo $challenges ?>
+            </div>
         </div>
-    </div>
+    <?php else : ?>
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Active challenges
+            </button>
+        </div>
+    <?php endif; ?>
 </div>
-
-<script>
-
-    function test() {
-        console.log('valami');
-    }
-
-</script>

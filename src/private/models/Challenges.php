@@ -242,11 +242,19 @@ class Challenges{
      */
     public function validate () {
         try {
-            $sql = 'SELECT CHALLENGEID FROM Challenges WHERE TIME = TO_DATE(\'' . $this->getTime() . '\', \'YYYY-MM-DD\')' .
-                '  AND STATUS = \'' . $this->getStatus() . '\' AND CHALLENGER = ' . $this->getChallengerID() . ' AND CHALLENGED = ' . $this->getChallengedID();
+            $sql = 'SELECT CHALLENGEID FROM Challenges WHERE STATUS = \'active\' AND CHALLENGER = ' .
+                $this->getChallengerID() . ' AND CHALLENGED = ' . $this->getChallengedID();
             $result = Database::query($sql);
 
+            $sql = 'SELECT CHALLENGEID FROM Challenges WHERE STATUS = \'active\' AND CHALLENGER = ' .
+                $this->getChallengedID() . ' AND CHALLENGED = ' . $this->getChallengerID();
+            $result2 = Database::query($sql);
+
             if ($row = oci_fetch_array($result)) {
+                throw new Exception("Már van aktív kihívásod a játékos ellen!");
+            }
+
+            if ($row = oci_fetch_array($result2)) {
                 throw new Exception("Már van aktív kihívásod a játékos ellen!");
             }
 
@@ -256,5 +264,36 @@ class Challenges{
             echo $e->getMessage();
             return false;
         }
+    }
+
+    /**
+     * @param $challengeID
+     * @return array
+     */
+    public function findQuestionsByChallengeID($challengeID) {
+        $questions = [];
+        $sql = 'SELECT QUESTIONID FROM Has WHERE CHALLENGEID = ' . $challengeID;
+        $result = Database::query($sql);
+
+        while ($row = oci_fetch_array($result)) {
+            array_push($questions, $row[0]);
+        }
+
+        return $questions;
+    }
+
+    /**
+     * @param $challengeID
+     * @return bool
+     */
+    public function markAsInactive($challengeID) {
+        $sql = 'UPDATE Challenges SET STATUS = \'inactive\' WHERE CHALLENGEID = \'' . $challengeID . '\'';
+        $result = Database::query($sql);
+
+        if ($row = oci_fetch_array($result)) {
+            return true;
+        }
+
+        return false;
     }
 }
