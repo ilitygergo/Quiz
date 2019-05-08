@@ -78,6 +78,9 @@ class Friends extends Controller {
         $this->setFriendsList($friends);
     }
 
+    /**
+     * @param $id
+     */
     public function printFriends($id){
         require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/models/User.php');
         $this->loadFriends($id);
@@ -90,14 +93,35 @@ class Friends extends Controller {
             echo '<td>'.$user->getFirstName().'</td>';
             echo '<td>'.$user->getLastName().'</td>';
             echo '<td>'.$since.'</td>';
+
             echo '<td><button type="button"  data-toggle="modal" data-target="#profile-modal" 
-                    onclick="Challenge(' . $user->getUserID() . ', \'' . $user->getUserName() . '\')" class="btn btn-warning">Challenge</button>   ';
-            echo '<button type="button" class="btn btn-danger">Delete</button></td>';
+                    onclick="Challenge(' . $user->getUserID() . ', \'' . $user->getUserName() . '\')" class="btn btn-warning">Challenge</button></td>';
+
+            echo '<td><form method="post">';
+            echo '<button type="submit" value="' . $user->getUserID() . '" class="btn btn-danger">Delete</button>';
+            echo '<input type="hidden" name="delete" value="' . $user->getUserID() . '">';
+            echo '</form></td>'    ;
+
             echo '</tr>';
 
         }
+    }
 
+    /**
+     * @param $friendID
+     * @param $userID
+     * @return bool
+     */
+    public function deleteFriend($friendID, $userID) {
+        $sql = 'DELETE FROM Friends WHERE (USER1 = ' . $friendID . ' AND USER2 = ' . $userID .
+        ') OR (USER2 = ' . $friendID . ' AND USER1 = ' . $userID . ')';
+        $result = Database::query($sql);
 
+        if ($result) {
+            return true;
+        }
+
+        return false;
     }
 
 }

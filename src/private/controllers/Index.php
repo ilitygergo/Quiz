@@ -41,8 +41,8 @@ class Index extends Controller {
     /**
      * @param $challenger
      */
-    public function createChallenge($hardness, $topic, $challenger) {
-        if(!$this->saveChallenge($hardness, $topic, $challenger)) {
+    public function createChallenge($hardness, $topic, $challenger, $challenged) {
+        if(!$this->saveChallenge($hardness, $topic, $challenger, $challenged)) {
             return;
         }
 
@@ -71,14 +71,18 @@ class Index extends Controller {
      * @param $challenger
      * @return bool
      */
-    public function saveChallenge($hardness, $topic, $challenger) {
-        $challenged = $this->user->getRandomUser($challenger);
+    public function saveChallenge($hardness, $topic, $challenger, $challenged) {
+        if ($challenged) {
+            $challengedUser = $challenged;
+        } else {
+            $challengedUser = $this->user->getRandomUser($challenger);
+        }
 
         $this->challenges->setHard($hardness);
         $this->challenges->setTime(date("Y-m-d"));
         $this->challenges->setTopic($topic);
         $this->challenges->setChallengerID($challenger);
-        $this->challenges->setChallengedID($challenged);
+        $this->challenges->setChallengedID($challengedUser);
         $this->challenges->setStatus('active');
 
         if($this->challenges->validate()) {
