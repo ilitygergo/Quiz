@@ -449,4 +449,19 @@ class User {
 
         return $users[array_rand($users)];
     }
+
+    /**
+     * @param $username
+     * @return null
+     */
+    public function getUserByUsername($username) {
+        $sql = 'SELECT USERID FROM USR WHERE USERNAME = \'' . $username . '\'';
+        $result = Database::query($sql);
+
+        if ($row = oci_fetch_array($result)) {
+            return $row[0];
+        }
+
+        return null;
+    }
 }

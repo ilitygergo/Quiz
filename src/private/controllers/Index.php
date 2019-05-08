@@ -135,10 +135,48 @@ class Index extends Controller {
         }
 
         foreach ($names as $name) {
-            $ret .= '<a class="dropdown-item" href="#" onclick="test()">' . $name . '</a>';
+            $ret .=
+                '<form method="post">' .
+                '<button type="submit" value="' . $name . '" class="btn btn-link">' . $name . '</button>' .
+                '<input type="hidden" name="username" value="' . $name . '">' .
+                '</form>'    ;
         }
 
         return $ret;
+    }
+
+    /**
+     * @param $user1
+     * @param $usr2
+     */
+    public function play($user1, $usr2) {
+        $user2 = $this->user->getUserByUsername($usr2);
+
+        $sql = 'SELECT CHALLENGEID FROM Challenges WHERE STATUS = \'active\' AND CHALLENGER = ' .
+            $user1 . ' AND CHALLENGED = ' . $user2;
+        $result = Database::query($sql);
+
+        $sql = 'SELECT CHALLENGEID FROM Challenges WHERE STATUS = \'active\' AND CHALLENGER = ' .
+            $user2 . ' AND CHALLENGED = ' . $user1;
+        $result2 = Database::query($sql);
+
+        if ($row = oci_fetch_array($result)) {
+            $_SESSION["CHALLENGEID"] = $row[0];
+        }
+
+        if ($row = oci_fetch_array($result2)) {
+            $_SESSION["CHALLENGEID"] = $row[0];
+        }
+
+        if (!$_SESSION["CHALLENGEID"]) {
+            return;
+        }
+
+        $_SESSION["QUESTIONID"] = $this->challenges->findQuestionsByChallengeID($_SESSION["CHALLENGEID"]);
+
+        $this->challenges->markAsInactive($_SESSION["CHALLENGEID"]);
+
+        header("Location: game");
     }
 
 }
