@@ -53,7 +53,9 @@ create table Friends(
 );
 
 create table Has(
-    challengeID NUMBER(10), questionID NUMBER(10) PRIMARY KEY NOT NULL,
+    challengeID NUMBER(10),
+    questionID NUMBER(10),
+    constraint has_key primary key (challengeID, questionID),
     FOREIGN KEY(challengeID) REFERENCES Challenges(challengeID),
     FOREIGN KEY(questionID) REFERENCES Questions(questionID)
 );

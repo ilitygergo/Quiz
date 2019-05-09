@@ -13,8 +13,8 @@ $ans3 =  $question->random();
 $ans4 =  $question->random();
 
 ?>
-<div class="progress">
-    <div class="progress-bar bg-warning" role="progressbar" style="width: <?=$_SESSION["POINTS"]?>0%;" aria-valuenow="<?=$_SESSION["POINTS"]?>" aria-valuemin="0" aria-valuemax="10"><?=$_SESSION["POINTS"]?></div>
+<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+    <div class="card-header">Points: <?=$_SESSION["POINTS"]?></div>
 </div>
 
 <div class="w3-display-container w3-round-large" style="height:400px;  position: relative; z-index: 1;
@@ -29,14 +29,14 @@ $ans4 =  $question->random();
     <hr/>
     <div <h1><?=$question->getTopic()?></h1></div>
 <div><h1 id="message-box"></h1><b></b></div>
-    <table class="w3-display-middle" style="margin-top: 120px">
-        <tr style="padding: 30px">
-            <td><div id="ans1" class="w3-btn w3-round-xxlarge w3-amber" onclick="getAnswer('ans1')" style="width: 200px"><?php echo $ans1 ?></div></td>
-            <td ><div id="ans2" class="w3-btn w3-round-xxlarge w3-amber" onclick="getAnswer('ans2')" style="width: 200px"><?php echo $ans2 ?></div></td>
+    <table class="w3-display-middle" style="margin-top: 140px">
+        <tr style="padding: 20px">
+            <td><div id="ans1" class="w3-btn w3-round-xxlarge w3-amber" onclick="getAnswer('ans1')" style="width: 240px"><?php echo $ans1 ?></div></td>
+            <td ><div id="ans2" class="w3-btn w3-round-xxlarge w3-amber" onclick="getAnswer('ans2')" style="width: 240px"><?php echo $ans2 ?></div></td>
         </tr>
         <tr>
-            <td ><div id="ans3" class="w3-btn w3-round-xxlarge w3-amber" onclick="getAnswer('ans3')" style="width: 200px"><?php echo $ans3 ?></div></td>
-            <td ><div id="ans4" class="w3-btn w3-round-xxlarge w3-amber" onclick="getAnswer('ans4')" style="width: 200px"><?php echo $ans4 ?></div></td>
+            <td ><div id="ans3" class="w3-btn w3-round-xxlarge w3-amber" onclick="getAnswer('ans3')" style="width: 240px"><?php echo $ans3 ?></div></td>
+            <td ><div id="ans4" class="w3-btn w3-round-xxlarge w3-amber" onclick="getAnswer('ans4')" style="width: 240px"><?php echo $ans4 ?></div></td>
         </tr>
     </table>
 </div>

@@ -7,7 +7,7 @@ $question->getQuestions($_SESSION["QUESTIONID"][$_SESSION["OFFSET"]]);
 
 if(isset($_POST['answer']) && !empty($_POST['answer'])) {
     if ($_POST['answer'] === $question->getCorrect()) {
-        if($question->getHard() === 1) {
+        if($question->getHard() == 1) {
             $_SESSION["POINTS"] += 2;
         } else {
             $_SESSION["POINTS"] += 1;
