@@ -87,16 +87,27 @@ if (isset($_GET['submit'])) {
                     <td>Gender:</td>
                     <td><?=$user->getGender()?></td>
                 </tr>
+                <?php if($user->getIsAdmin() == 1 ) : ?>
+                    <tr>
+                        <td>Place:</td>
+                        <td>-</td>
+                    </tr>
 
-                <tr>
-                    <td>Place:</td>
-                    <td><?=$profile->getUserPlace($_SESSION['USERID']);?></td>
-                </tr>
+                    <tr>
+                        <td>Points:</td>
+                        <td>-</td>
+                    </tr>
+                <?php else : ?>
+                    <tr>
+                        <td>Place:</td>
+                        <td><?=$profile->getUserPlace($_SESSION['USERID']);?></td>
+                    </tr>
 
-                <tr>
-                    <td>Points:</td>
-                    <td><?=$profile->getUserPoints($_SESSION['USERID']);?></td>
-                </tr>
+                    <tr>
+                        <td>Points:</td>
+                        <td><?=$profile->getUserPoints($_SESSION['USERID']);?></td>
+                    </tr>
+                <?php endif; ?>
             </table>
             <button id="btn-my-stat-profile" class="btn btn-warning button-left"  data-toggle="modal" data-target="#Mymodal">My Stat</button>
             <button id="btn-edit-profile" class="btn btn-warning button-right"><i class="fas fa-pencil-alt"> Edit</i></button>
