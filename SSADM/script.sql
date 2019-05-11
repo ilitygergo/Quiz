@@ -65,9 +65,11 @@ ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD';
 INSERT into Usr values(NULL, 'admin', 'Admin', 'Admin', 'admin@gmail.com', 'Password123', '1998-03-15', 'male', 1);
 INSERT into Usr values(NULL, 'test', 'Teszt', 'Elek', 'teszt@gmail.com', 'Password123', '1998-03-15', 'male', 0);
 INSERT into Usr values(NULL, 'test2', 'Teszt', 'Balázs', 'teszt2@gmail.com', 'Password123', '1994-06-10', 'male', 0);
+INSERT into Usr values(NULL, 'test3', 'Teszt', 'Kelemen', 'teszt3@gmail.com', 'Password123', '1994-01-23', 'male', 0);
 
 INSERT into Results values(NULL, 5, 0, '2019-02-20', 'history', 2);
 INSERT into Results values(NULL, 8, 0, '2019-02-24', 'history', 3);
+INSERT into Results values(NULL, 4, 0, '2019-02-28', 'history', 4);
 
 INSERT into Challenges values(NULL, 0, '2019-02-20', 'history', 2, 3, 'inactive');
 
@@ -307,6 +309,8 @@ INSERT INTO Questions VALUES (NULL, '0', 'literature', 'Raven', 'Cat', 'Monkey',
 INSERT INTO Questions VALUES (NULL, '0', 'literature', 'Spanish', 'American', 'French', 'Italian', 'What Is The Nationality Of Picasso?');
 
 INSERT into Friends values(2, 3, '2019-02-19', 'active');
+INSERT into Friends values(3, 4, '2019-02-19', 'active');
+INSERT into Friends values(4, 2, '2019-02-19', 'active');
 
 INSERT into Has values(1, 1);
 INSERT into Has values(1, 2);
@@ -318,3 +322,19 @@ INSERT into Has values(1, 24);
 INSERT into Has values(1, 26);
 INSERT into Has values(1, 31);
 INSERT into Has values(1, 32);
+
+CREATE OR REPLACE TRIGGER torol_results
+    AFTER DELETE ON Usr
+    FOR EACH ROW
+BEGIN
+    DELETE FROM Results WHERE userID = :OLD.userID;
+END;
+/
+
+CREATE OR REPLACE TRIGGER torol_friends
+    AFTER DELETE ON Usr
+    FOR EACH ROW
+BEGIN
+    DELETE FROM Friends WHERE user1 = :OLD.userID OR user2 = :OLD.userID;
+END;
+/
