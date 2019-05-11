@@ -44,10 +44,11 @@ create table Questions(
 );
 
 create table Friends(
-    user1 NUMBER(10) PRIMARY KEY NOT NULL,
+    user1 NUMBER(10),
     user2 NUMBER(10),
     since	DATE,
     status	VARCHAR(30),
+    constraint friends_key primary key (user1, user2),
     FOREIGN KEY(user1) REFERENCES Usr(userID),
     FOREIGN KEY(user2) REFERENCES Usr(userID)
 );
