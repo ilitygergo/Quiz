@@ -16,7 +16,7 @@ class Game extends Controller {
             $_SESSION["POINTS"] = 0;
         }
 
-        if($_SESSION["OFFSET"] == 9) {
+        if($_SESSION["OFFSET"] == 10) {
             header("Location: index");
         }
     }
