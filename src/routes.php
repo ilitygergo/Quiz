@@ -36,6 +36,10 @@ Route::set('deleteUser', function() {
     Ranklist::action('deleteUser');
 });
 
+Route::set('insertQuestion', function() {
+    Ranklist::action('insertQuestion');
+});
+
 Route::set('Users', function(){
     Users::view('Users');
 });

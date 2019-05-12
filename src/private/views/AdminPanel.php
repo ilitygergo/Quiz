@@ -12,7 +12,7 @@ if(!$user->getIsAdmin()){
 <script type="text/javascript">
 
     function actionRedirect(id){
-        if(typeof id === "number" && id >= 0 && id <= 2){
+        if(typeof id === "number" && id >= 0 && id <= 3){
             location.href = "AdminPanel?action=" + id;
         } else {
             location.href = "AdminPanel?action=0";
@@ -58,6 +58,7 @@ if(isset($_GET['action'])){
         case 0: $adminPanel->showActions(); break;
         case 1: $adminPanel->deleteUserAction(); $adminPanel->printGoBackButton(); break;
         case 2: $adminPanel->statisticsAction(); $adminPanel->printGoBackButton(); break;
+        case 3: $adminPanel->insertQuestionAction(); $adminPanel->printGoBackButton(); break;
         default : $adminPanel->showActions();
     }
 } else {

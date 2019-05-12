@@ -66,7 +66,7 @@ class AdminPanel extends Controller
             position: relative;
             z-index: 1;
             background: #FFFFFF;
-            max-width: 500px;
+            max-width: 50%;
             top: 25%;
             margin:30px auto 100px ;
             padding: 45px;
@@ -74,13 +74,17 @@ class AdminPanel extends Controller
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
                 <div class="w3-animate-top"> <h4>Select an action</h4></div>
                 <hr/>
-            <button class="w3-button w3-red w3-half"
+            <button class="w3-button w3-red w3-third"
             onclick="actionRedirect(1);">
                 DELETE USER
             </button>
-            <button class="w3-button w3-green w3-half"
+            <button class="w3-button w3-green w3-third"
             onclick="actionRedirect(2)">
                 SHOW STATISTICS
+            </button>
+            <button class="w3-button w3-blue w3-third"
+            onclick="actionRedirect(3)">
+                INSERT QUESTIONS
             </button>
         </div>
         
@@ -110,6 +114,12 @@ class AdminPanel extends Controller
         $sql = "DELETE FROM USR
                 WHERE USERID = $id";
         Database::query($sql);
+    }
+
+    public function addQuestion($d,$t,$r,$w1,$w2,$w3,$q){
+        $sql = "INSERT INTO Questions VALUES (NULL, '$d', '$t', '$r', '$w1', '$w2', '$w3', '$q.')";
+        Database::query($sql);
+        header("Location: AdminPanel");
     }
 
     public function loadStatisticsList(){
@@ -143,8 +153,63 @@ class AdminPanel extends Controller
 
     }
 
+    public function insertQuestionAction(){
+        ?>
+
+        <div class="w3-container w3-padding">
+            <div class="w3-card-4">
+                <div class="w3-center w3-padding-16 w3-blue">
+                    <h2> INSERT A QUESTION </h2>
+                </div>
+                <div class="w3-margin w3-center">
+                    <form method="post" action="insertQuestion">
+                        <input class="w3-input" type="text" name="qu" title="question" required>
+                        <label>QUESTION</label>
+
+                        <input class="w3-input" type="text" name = "ra" title="right answer" required>
+                        <label>Right Answer</label>
+
+                        <input class="w3-input" type="text" name = "wa1" title="wrong answer" required>
+                        <label>Wrong Answer</label>
+
+                        <input class="w3-input" type="text" name = "wa2" title="wrong answer" required>
+                        <label>Wrong Answer</label>
+
+                        <input class="w3-input" type="text" name = "wa3" title="wrong answer" required>
+                        <label>Wrong Answer</label>
+
+                        <select class="w3-select" name="tp" title="category" required>
+                            <option value="" disabled selected></option>
+                            <option value="history">History</option>
+                            <option value="geography">Geography</option>
+                            <option value="technology">Technology</option>
+                            <option value="literature">Literature</option>
+                            <option value="science">Science</option>
+                        </select>
+                        <label>Topic</label>
+
+                        <hr style="
+                        border: 2px solid lightskyblue;
+                        "/>
+
+                        <h5>Difficulty</h5>
+                        <input class="w3-radio" type="radio" name="ha" value="0" title="easy" checked/>
+                        <label>Easy</label>
+
+                        <input class="w3-radio" type="radio" name="ha" value="1" title="hard"/>
+                        <label>Hard</label><br/>
+
+                        <input type="submit" class="w3-button w3-wide w3-green w3-margin-top w3-margin-bottom"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+<?php
+    }
+
     public function printGoBackButton(){
-        echo '<button class="w3-button w3-margin-top w3-blue-gray w3-wide w3-display-middle" onclick="actionRedirect(`back`)">';
+        echo '<button class="w3-button w3-margin-top w3-blue-gray w3-wide w3-center w3-bar" onclick="actionRedirect(`back`)">';
         echo 'GO BACK</button>';
     }
 
