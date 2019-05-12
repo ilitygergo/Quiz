@@ -7,6 +7,8 @@ $user = new User();
 if (isset($_SESSION["USERID"])) {
     $user->setUserID($_SESSION["USERID"]);
     $user->getUser($user->getUserID());
+} else {
+    header("Location: login");
 }
 
 ?>
