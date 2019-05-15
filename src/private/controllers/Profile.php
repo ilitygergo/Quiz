@@ -177,6 +177,24 @@ class Profile extends Controller {
         return '-';
     }
 
+    public function getLastResults($ID) {
+        $sql = 'SELECT USR.username, RESULTS.score, RESULTS.hard, RESULTS.topic, RESULTS.time FROM RESULTS ' .
+                'INNER JOIN USR ON RESULTS.userid = USR.userid ' .
+                'WHERE RESULTS.userid = ' . $ID . ' AND ROWNUM <= 3' .
+                'ORDER BY time';
+        $result = Database::query($sql);
 
+        while ($row = oci_fetch_array($result,OCI_NUM)){
+            echo '<tr>';
+            echo '<td>' . $row[0] . '</td>';
+            echo '<td>' . $row[1] . '</td>';
+            echo '<td>' . $row[2] . '</td>';
+            echo '<td>' . $row[3] . '</td>';
+            echo '<td>' . $row[4] . '</td>';
+            echo '</tr>';
+        }
+
+        return '';
+    }
 
 }
