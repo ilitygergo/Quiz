@@ -85,25 +85,26 @@ class Friends extends Controller {
         require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/models/User.php');
         $this->loadFriends($id);
 
-        foreach ($this->friendsList as $id => $since){
-            $user = new User();
-            $user->getUser($id);
+        if ($this->friendsList) {
+            foreach ($this->friendsList as $id => $since){
+                $user = new User();
+                $user->getUser($id);
 
-            echo '<tr>';
-            echo '<td>'.$user->getFirstName().'</td>';
-            echo '<td>'.$user->getLastName().'</td>';
-            echo '<td>'.$since.'</td>';
+                echo '<tr>';
+                echo '<td>'.$user->getFirstName().'</td>';
+                echo '<td>'.$user->getLastName().'</td>';
+                echo '<td>'.$since.'</td>';
 
-            echo '<td><button type="button"  data-toggle="modal" data-target="#profile-modal" 
+                echo '<td><button type="button"  data-toggle="modal" data-target="#profile-modal" 
                     onclick="Challenge(' . $user->getUserID() . ', \'' . $user->getUserName() . '\')" class="btn btn-warning">Challenge</button></td>';
 
-            echo '<td><form method="post">';
-            echo '<button type="submit" value="' . $user->getUserID() . '" class="btn btn-danger">Delete</button>';
-            echo '<input type="hidden" name="delete" value="' . $user->getUserID() . '">';
-            echo '</form></td>'    ;
+                echo '<td><form method="post">';
+                echo '<button type="submit" value="' . $user->getUserID() . '" class="btn btn-danger">Delete</button>';
+                echo '<input type="hidden" name="delete" value="' . $user->getUserID() . '">';
+                echo '</form></td>'    ;
 
-            echo '</tr>';
-
+                echo '</tr>';
+            }
         }
     }
 

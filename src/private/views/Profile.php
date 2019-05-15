@@ -169,7 +169,7 @@ if (isset($_GET['submit'])) {
 </div>
 
 <div class="modal fade" id="Mymodal">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">
@@ -178,36 +178,87 @@ if (isset($_GET['submit'])) {
             </div>
             <div class="modal-body">
                 <div id="content">
-                    <table style="width:100%">
+                    <table border="1" style="width:100%">
                         <tr>
                             <td></td>
-                            <td>Games</td>
+                            <td><b>Games</b></td>
+                            <td><b>All points</b></td>
                             <td>Points</td>
+                            <td>Last Played</td>
+                            <td>Points(hard)</td>
+                            <td>Last Played(hard)</td>
                         </tr>
                         <tr>
-                            <td>History:</td>
+                            <td><b>History:</b></td>
                             <td><?=$profile->getNumberOfGames($_SESSION['USERID'], 'history')?></td>
+                            <td><?=$profile->countPointsByTopic($_SESSION['USERID'], 'history') +
+                                $profile->countPointsByTopicHard($_SESSION['USERID'], 'history')?></td>
                             <td><?=$profile->countPointsByTopic($_SESSION['USERID'], 'history')?></td>
+                            <td><?=$profile->lastPlayedDate($_SESSION['USERID'], 'history')?></td>
+                            <td><?=$profile->countPointsByTopicHard($_SESSION['USERID'], 'history')?></td>
+                            <td><?=$profile->lastPlayedDateHard($_SESSION['USERID'], 'history')?></td>
                         </tr>
                         <tr>
-                            <td>Geography:</td>
+                            <td><b>Geography:</b></td>
                             <td><?=$profile->getNumberOfGames($_SESSION['USERID'], 'geography')?></td>
+                            <td><?=$profile->countPointsByTopic($_SESSION['USERID'], 'geography') +
+                                $profile->countPointsByTopicHard($_SESSION['USERID'], 'geography')?></td>
                             <td><?=$profile->countPointsByTopic($_SESSION['USERID'], 'geography')?></td>
+                            <td><?=$profile->lastPlayedDate($_SESSION['USERID'], 'geography')?></td>
+                            <td><?=$profile->countPointsByTopicHard($_SESSION['USERID'], 'geography')?></td>
+                            <td><?=$profile->lastPlayedDateHard($_SESSION['USERID'], 'geography')?></td>
                         </tr>
                         <tr>
-                            <td>Science:</td>
+                            <td><b>Science:</b></td>
                             <td><?=$profile->getNumberOfGames($_SESSION['USERID'], 'science')?></td>
+                            <td><?=$profile->countPointsByTopic($_SESSION['USERID'], 'science') +
+                                $profile->countPointsByTopicHard($_SESSION['USERID'], 'science')?></td>
                             <td><?=$profile->countPointsByTopic($_SESSION['USERID'], 'science')?></td>
+                            <td><?=$profile->lastPlayedDate($_SESSION['USERID'], 'science')?></td>
+                            <td><?=$profile->countPointsByTopicHard($_SESSION['USERID'], 'science')?></td>
+                            <td><?=$profile->lastPlayedDateHard($_SESSION['USERID'], 'science')?></td>
                         </tr>
                         <tr>
-                            <td>Technology:</td>
+                            <td><b>Technology:</b></td>
                             <td><?=$profile->getNumberOfGames($_SESSION['USERID'], 'technology')?></td>
+                            <td><?=$profile->countPointsByTopic($_SESSION['USERID'], 'technology') +
+                                $profile->countPointsByTopicHard($_SESSION['USERID'], 'technology')?></td>
                             <td><?=$profile->countPointsByTopic($_SESSION['USERID'], 'technology')?></td>
+                            <td><?=$profile->lastPlayedDate($_SESSION['USERID'], 'technology')?></td>
+                            <td><?=$profile->countPointsByTopicHard($_SESSION['USERID'], 'technology')?></td>
+                            <td><?=$profile->lastPlayedDateHard($_SESSION['USERID'], 'technology')?></td>
                         </tr>
                         <tr>
-                            <td>Literature:</td>
+                            <td><b>Literature:</b></td>
                             <td><?=$profile->getNumberOfGames($_SESSION['USERID'], 'literature')?></td>
+                            <td><?=$profile->countPointsByTopic($_SESSION['USERID'], 'literature') +
+                                $profile->countPointsByTopicHard($_SESSION['USERID'], 'literature')?></td>
                             <td><?=$profile->countPointsByTopic($_SESSION['USERID'], 'literature')?></td>
+                            <td><?=$profile->lastPlayedDate($_SESSION['USERID'], 'literature')?></td>
+                            <td><?=$profile->countPointsByTopicHard($_SESSION['USERID'], 'literature')?></td>
+                            <td><?=$profile->lastPlayedDateHard($_SESSION['USERID'], 'literature')?></td>
+                        </tr>
+                    </table>
+
+                    <hr>
+
+                    <h4>Last challenged/challenger:</h4>
+
+                    <table border="1" style="width:100%">
+                        <tr>
+                            <td></td>
+                            <td><b>Date</b></td>
+                            <td><b>Username</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>You challenged:</b></td>
+                            <td><?=$profile->lastChallenged($_SESSION['USERID'], 0)?></td>
+                            <td><?=$profile->lastChallenged($_SESSION['USERID'], 1)?></td>
+                        </tr>
+                        <tr>
+                            <td><b>Challenged you:</b></td>
+                            <td><?=$profile->lastChallenger($_SESSION['USERID'], 0)?></td>
+                            <td><?=$profile->lastChallenger($_SESSION['USERID'], 1)?></td>
                         </tr>
                     </table>
                 </div>
