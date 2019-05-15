@@ -20,11 +20,13 @@ class Ranklist extends Controller {
     }
 
     public function loadRanklist(){
-        $sql = "SELECT userID, SUM(score) FROM RESULTS GROUP BY userID ORDER BY SUM(score) DESC";
+        $sql = "SELECT * FROM (SELECT (SUM(SCORE)) AS SC,USERID FROM RESULTS GROUP BY USERID ORDER BY SUM(SCORE) ASC) yo
+                      INNER JOIN USR
+                      ON yo.USERID = USR.USERID";
         $result = Database::query($sql);
         $array = array();
-        while ($row = oci_fetch_array($result,OCI_NUM)){
-            $array[$row[0]] = $row[1];
+        while ($row = oci_fetch_array($result,OCI_BOTH)){
+            $array[$row['USERID']] = $row['SC'];
         }
 
         self::setRanklist($array);

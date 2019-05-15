@@ -4,10 +4,95 @@ class AdminPanel extends Controller
 {
     private $userList;
     private $statisticsList;
+    private $scienceTopPlayer;
+    private $historyTopPlayer;
+    private $literatureTopPlayer;
+    private $technologyTopPlayer;
+    private $geographyTopPlayer;
 
     public function __construct()
     {
         $this->userList = null;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getScienceTopPlayer()
+    {
+        return $this->scienceTopPlayer;
+    }
+
+    /**
+     * @param mixed $scienceTopPlayer
+     */
+    public function setScienceTopPlayer($scienceTopPlayer)
+    {
+        $this->scienceTopPlayer = $scienceTopPlayer;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHistoryTopPlayer()
+    {
+        return $this->historyTopPlayer;
+    }
+
+    /**
+     * @param mixed $historyTopPlayer
+     */
+    public function setHistoryTopPlayer($historyTopPlayer)
+    {
+        $this->historyTopPlayer = $historyTopPlayer;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLiteratureTopPlayer()
+    {
+        return $this->literatureTopPlayer;
+    }
+
+    /**
+     * @param mixed $literatureTopPlayer
+     */
+    public function setLiteratureTopPlayer($literatureTopPlayer)
+    {
+        $this->literatureTopPlayer = $literatureTopPlayer;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTechnologyTopPlayer()
+    {
+        return $this->technologyTopPlayer;
+    }
+
+    /**
+     * @param mixed $technologyTopPlayer
+     */
+    public function setTechnologyTopPlayer($technologyTopPlayer)
+    {
+        $this->technologyTopPlayer = $technologyTopPlayer;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGeographyTopPlayer()
+    {
+        return $this->geographyTopPlayer;
+    }
+
+    /**
+     * @param mixed $geographyTopPlayer
+     */
+    public function setGeographyTopPlayer($geographyTopPlayer)
+    {
+        $this->geographyTopPlayer = $geographyTopPlayer;
     }
 
     /**
@@ -132,9 +217,68 @@ class AdminPanel extends Controller
         $this->setStatisticsList($array);
     }
 
+    public function loadTopPlayers(){
+        $sql = "SELECT SCORE,
+                (SELECT USERNAME FROM USR WHERE USERID=RESULTS.USERID) AS USERNAME,
+                 TOPIC FROM RESULTS
+                  WHERE SCORE = (SELECT MAX(SCORE) FROM RESULTS WHERE TOPIC = 'science')";
+        $result = Database::query($sql);
+        while ($row = oci_fetch_array($result,OCI_NUM)){
+            $tmp= null;
+            $tmp[$row[1]] = $row[0];
+            self::setScienceTopPlayer($tmp);
+        }
+
+        $sql = "SELECT SCORE,
+                (SELECT USERNAME FROM USR WHERE USERID=RESULTS.USERID) AS USERNAME,
+                 TOPIC FROM RESULTS
+                  WHERE SCORE = (SELECT MAX(SCORE) FROM RESULTS WHERE TOPIC = 'literature')";
+        $result = Database::query($sql);
+        while ($row = oci_fetch_array($result,OCI_NUM)){
+            $tmp= null;
+            $tmp[$row[1]] = $row[0];
+            self::setLiteratureTopPlayer($tmp);
+        }
+
+        $sql = "SELECT SCORE,
+                (SELECT USERNAME FROM USR WHERE USERID=RESULTS.USERID) AS USERNAME,
+                 TOPIC FROM RESULTS
+                  WHERE SCORE = (SELECT MAX(SCORE) FROM RESULTS WHERE TOPIC = 'history')";
+        $result = Database::query($sql);
+        while ($row = oci_fetch_array($result,OCI_NUM)){
+            $tmp= null;
+            $tmp[$row[1]] = $row[0];
+            self::setHistoryTopPlayer($tmp);
+        }
+
+        $sql = "SELECT SCORE,
+                (SELECT USERNAME FROM USR WHERE USERID=RESULTS.USERID) AS USERNAME,
+                 TOPIC FROM RESULTS
+                  WHERE SCORE = (SELECT MAX(SCORE) FROM RESULTS WHERE TOPIC = 'geography')";
+        $result = Database::query($sql);
+        while ($row = oci_fetch_array($result,OCI_NUM)){
+            $tmp= null;
+            $tmp[$row[1]] = $row[0];
+            self::setGeographyTopPlayer($tmp);
+        }
+
+        $sql = "SELECT SCORE,
+                (SELECT USERNAME FROM USR WHERE USERID=RESULTS.USERID) AS USERNAME,
+                 TOPIC FROM RESULTS
+                  WHERE SCORE = (SELECT MAX(SCORE) FROM RESULTS WHERE TOPIC = 'technology')";
+        $result = Database::query($sql);
+        while ($row = oci_fetch_array($result,OCI_NUM)){
+            $tmp= null;
+            $tmp[$row[1]] = $row[0];
+            self::setTechnologyTopPlayer($tmp);
+        }
+
+    }
+
     public function statisticsAction(){
 
         self::loadStatisticsList();
+        self::loadTopPlayers();
 
         echo '<table class="w3-table w3-border w3-bordered w3-centered w3-hoverable">';
         echo '<tr>';
@@ -151,6 +295,77 @@ class AdminPanel extends Controller
 
         echo '</table>';
 
+        echo '<hr style="border:2px solid black;"/>';
+
+        echo '<table class="w3-table w3-border w3-bordered w3-centered w3-hoverable">';
+        echo '<tr>';
+        echo '<th>TOPIC</th>';
+        echo '<th>USERNAME</th>';
+        echo '<th>MAX SCORE</th>';
+        echo '</tr>';
+
+        $tmp = null;
+
+        $tmp = self::getScienceTopPlayer();
+        echo '<tr>';
+        echo '<td>SCIENCE</td>';
+        if(!empty($tmp)) {
+            echo '<td>' . key($tmp) . '</td>';
+            echo '<td>' . $tmp[key($tmp)] . '</td>';
+        } else {
+            echo '<td> NO RESULTS </td>';
+            echo '<td> NO RESULTS </td>';
+        }
+        echo '</tr>';
+
+        $tmp = self::getGeographyTopPlayer();
+        echo '<tr>';
+        echo '<td>GEOGRAPHY</td>';
+        if(!empty($tmp)) {
+            echo '<td>' . key($tmp) . '</td>';
+            echo '<td>' . $tmp[key($tmp)] . '</td>';
+        } else {
+            echo '<td> NO RESULTS </td>';
+            echo '<td> NO RESULTS </td>';
+        }
+        echo '</tr>';
+
+        $tmp = self::getHistoryTopPlayer();
+        echo '<tr>';
+        echo '<td>HISTORY</td>';
+        if(!empty($tmp)) {
+            echo '<td>' . key($tmp) . '</td>';
+            echo '<td>' . $tmp[key($tmp)] . '</td>';
+        } else {
+            echo '<td> NO RESULTS </td>';
+            echo '<td> NO RESULTS </td>';
+        }
+        echo '</tr>';
+
+        $tmp = self::getLiteratureTopPlayer();
+        echo '<tr>';
+        echo '<td>LITERATURE</td>';
+        if(!empty($tmp)) {
+            echo '<td>' . key($tmp) . '</td>';
+            echo '<td>' . $tmp[key($tmp)] . '</td>';
+        } else {
+            echo '<td> NO RESULTS </td>';
+            echo '<td> NO RESULTS </td>';
+        }
+        echo '</tr>';
+
+        $tmp = self::getTechnologyTopPlayer();
+        echo '<tr>';
+        echo '<td>TECHNOLOGY</td>';
+        if(!empty($tmp)) {
+            echo '<td>' . key($tmp) . '</td>';
+            echo '<td>' . $tmp[key($tmp)] . '</td>';
+        } else {
+            echo '<td> NO RESULTS </td>';
+            echo '<td> NO RESULTS </td>';
+        }
+        echo '</tr>';
+        echo '</table>';
     }
 
     public function insertQuestionAction(){
