@@ -261,6 +261,22 @@ if (isset($_GET['submit'])) {
                             <td><?=$profile->lastChallenger($_SESSION['USERID'], 1)?></td>
                         </tr>
                     </table>
+
+                    <hr>
+
+                    <h4>Last 3 results:</h4>
+
+                    <table border="1" style="width:100%">
+                        <tr>
+                            <td><b>Enemy</b></td>
+                            <td><b>Score</b></td>
+                            <td><b>Hard</b></td>
+                            <td><b>Topic</b></td>
+                            <td><b>Time</b></td>
+                        </tr>
+                        <?=$profile->getLastResults($_SESSION['USERID'])?>
+                    </table>
+
                 </div>
             </div>
             <div class="modal-footer">
