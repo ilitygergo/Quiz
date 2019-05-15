@@ -4,7 +4,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/Quiz/src/private/etc/menu.p
 $users = new Users();
 
 if(!isset($_GET['userid'])) {
-    $users->printUsersTable();
+    $users->printUsersTable($_SESSION['USERID']);
 } else {
     $id = $_GET['userid'];
     if($users->validUserId($id)){

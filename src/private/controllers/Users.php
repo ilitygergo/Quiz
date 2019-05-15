@@ -29,10 +29,10 @@ class Users extends Controller
         $this->usersList = $usersList;
     }
 
-    public function loadUsersList(){
+    public function loadUsersList($ID){
         $sql = "SELECT userid,username
                 FROM Usr
-                WHERE isadmin = 0
+                WHERE isadmin = 0 AND userid != " . $ID . "
                 ORDER BY USERNAME ASC";
         $result = Database::query($sql);
         $array = null;
@@ -42,8 +42,8 @@ class Users extends Controller
         self::setUsersList($array);
     }
 
-    public function printUsersTable(){
-        self::loadUsersList();
+    public function printUsersTable($ID){
+        self::loadUsersList($ID);
         echo '<table class="w3-table w3-border w3-bordered w3-centered w3-hoverable">';
         echo '<tr>';
         echo '<th>USERNAME</th>';
