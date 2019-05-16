@@ -268,7 +268,7 @@ if (isset($_GET['submit'])) {
 
                     <table border="1" style="width:100%">
                         <tr>
-                            <td><b>Enemy</b></td>
+                            <td><b>Username</b></td>
                             <td><b>Score</b></td>
                             <td><b>Hard</b></td>
                             <td><b>Topic</b></td>
